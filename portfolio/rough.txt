@@ -1,0 +1,9 @@
+cd ..
+./env/scripts/activate
+cd portfolio/portfolio
+npm start
+
+
+git add .
+git commit -m "message"
+git push origin react-portfolio

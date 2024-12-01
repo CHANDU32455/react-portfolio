@@ -1,0 +1,285 @@
+/* Base styles */
+:root {
+    --primary-color: #f39c12;
+    --secondary-color: #e67e22;
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --description-color: #bdbdbd;
+  }
+
+  /* Main landing container */
+  .landing-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    padding: 0 10%; /* Horizontal padding */
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color); /* Apply background color */
+  }
+  
+  /* Landing content styles */
+  .landing-content {
+    max-width: 50%;
+  }
+  
+  .landing-title {
+    font-size: 48px; /* Title font size */
+    margin-bottom: 10px; /* Space below title */
+    color: var(--primary-color); /* Primary color */
+  }
+  
+  .landing-subtitle {
+    font-size: 36px; /* Subtitle font size */
+    color: var(--secondary-color); /* Secondary color */
+    margin-bottom: 20px; /* Space below subtitle */
+  }
+  
+  .landing-description {
+    font-size: 18px; /* Description font size */
+    line-height: 1.6; /* Line height for readability */
+    margin-bottom: 20px; /* Space below description */
+    color: var(--description-color); /* Description color */
+  }
+  
+  .landing-button {
+    cursor: pointer;
+    font-size: 1.4rem;
+    border-radius: 16px;
+    border: none;
+    padding: 2px;
+    background: radial-gradient(circle 80px at 80% -10%, #ffffff, #181b1b);
+    position: relative;
+    overflow: hidden; /* Ensure the blobs stay within the button */
+    transition: transform 0.3s ease; /* Smooth transform transition */
+  }
+  
+  .landing-button::after {
+    content: "";
+    position: absolute;
+    width: 65%;
+    height: 60%;
+    border-radius: 120px;
+    top: 0;
+    right: 0;
+    box-shadow: 0 0 20px #ffffff38;
+    z-index: -1;
+  }
+  
+  .blob1 {
+    position: absolute;
+    width: 70px;
+    height: 100%;
+    border-radius: 16px;
+    bottom: 0;
+    left: 0;
+    background: radial-gradient(
+      circle 60px at 0% 100%,
+      #3fe9ff,
+      #0000ff80,
+      transparent
+    );
+    box-shadow: -10px 10px 30px #0051ff2d;
+  }
+  
+  .blob2 {
+    position: absolute;
+    width: 70px;
+    height: 100%;
+    border-radius: 16px;
+    bottom: 0;
+    right: 0; /* Adjusted to position blob2 on the right */
+    background: radial-gradient(
+      circle 60px at 100% 100%,
+      #ff4081,
+      #ff408180,
+      transparent
+    );
+    box-shadow: 10px 10px 30px #ff40812d;
+  }
+  
+  .inner {
+    padding: 14px 25px;
+    border-radius: 14px;
+    color: #fff;
+    z-index: 3;
+    position: relative;
+    background: radial-gradient(circle 80px at 80% -50%, #777777, #0f1111);
+  }
+  
+  .inner::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 14px;
+    background: radial-gradient(
+      circle 60px at 0% 100%,
+      #00e1ff1a,
+      #0000ff11,
+      transparent
+    );
+    position: absolute;
+  }
+  
+  /* Hover effects */
+  .landing-button:hover {
+    transform: scale(1.05); /* Slightly scale the button on hover */
+  }
+  
+  /* Rotating border effect */
+  .landing-button:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+    border: 4px solid transparent; /* Start with a transparent border */
+    animation: border-animation 3s linear infinite; /* Animate border color */
+  }
+  
+  /* Keyframes for rotating border animation */
+  @keyframes border-animation {
+    0% {
+      border-color: transparent transparent #ff4081 transparent; /* Start with pink at bottom */
+    }
+    15% {
+        border-color: transparent #ecf0c6 transparent transparent; /* Move to left with cyan */
+    }
+    25% {
+      border-color: transparent #00e1ff transparent transparent; /* Move to left with cyan */
+    }
+    50% {
+      border-color: #ff4081 transparent transparent transparent; /* Move to top with pink */
+    }
+    75% {
+      border-color: transparent transparent #00ff00 transparent; /* Move to right with green */
+    }
+    100% {
+      border-color: transparent transparent #ff4081 transparent; /* Reset to bottom with pink */
+    }
+  }
+  
+  
+  /* Image box styles */
+  .landing-image {
+    max-width: 50%; /* Maximum width for image box */
+    display: flex;
+    justify-content: center; /* Center the image */
+  }
+  
+  .landing-image img {
+    border-radius: 15px; /* Rounded image corners */
+    max-width: 100%; /* Responsive image width */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Shadow for image */
+  }
+  
+  /* From Uiverse.io by alexmaracinaru */
+  .cta {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: white; /* Set text color to white */
+  }
+  
+  .cta span {
+    padding-bottom: 7px;
+    letter-spacing: 4px;
+    font-size: 14px;
+    padding-right: 15px;
+    text-transform: uppercase;
+    color: white; /* Set text color to white */
+  }
+  
+  .cta svg {
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+    fill: white; /* Set SVG fill color to white */
+  }
+  
+  .cta:hover svg {
+    transform: translateX(0);
+  }
+  
+  .cta:active svg {
+    transform: scale(0.9);
+  }
+  
+  .hover-underline-animation {
+    position: relative;
+    color: white; /* Set underline animation color to white */
+    padding-bottom: 20px;
+  }
+  
+  .hover-underline-animation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff; /* Set underline color to white */
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .cta:hover .hover-underline-animation:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  /* Resume button specific styles */
+  .resume-button {
+    position: absolute; 
+    top: 20px; 
+    right: 20px; 
+    background-color: transparent; 
+    z-index: 10; /* Ensure it stays above other content */
+}
+  
+  /* Smaller screens layout */
+  @media (max-width: 365px) {
+    .landing-container {
+      flex-direction: column; /* Stack elements vertically */
+      text-align: left; /* Center text */
+      padding: 0 5%; /* Adjust padding for smaller screens */
+    }
+  
+    .landing-content {
+      order: 1; /* Content box order */
+      margin-left: 15px;
+      margin-top: 30px;
+      max-width: 100%; /* Full width on small screens */
+    }
+  
+    .landing-image {
+        order: 2; /* Image box order */
+        margin-bottom: 30px; /* Space below image */
+        max-width: 100%; /* Full width for image */
+        overflow: hidden; /* Ensure the image doesn't overflow */
+        position: relative; /* Allow for better positioning adjustments */
+    }      
+  
+    .landing-button {
+      order: 3; /* Button box order */
+      margin-bottom: 30px; /* Space below button */
+      text-align: center; /* Center align button */
+    }
+  }
+  
+  /* Cursor animation */
+  .cursor {
+    animation: blink 1s steps(1) infinite; /* Blinking effect */
+  }
+  
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  

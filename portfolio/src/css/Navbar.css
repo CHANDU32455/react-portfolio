@@ -1,0 +1,120 @@
+/* Base Navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(34, 34, 34, 0.9);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hide the navbar when scrolling down */
+.navbar-hidden {
+    transform: translateY(-100%); /* Move the navbar out of view */
+}
+
+/* Logo styling */
+.logo img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Navbar links */
+.navbar-item {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 25px;
+}
+
+.navbar-item:hover {
+    color: #f39c12; /* Example hover effect */
+}
+
+
+.logo img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Menu button */
+.menu-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    display: none;
+    transition: color 0.3s ease;
+}
+
+.menu-button:hover {
+    color: #f39c12;
+}
+
+/* Navbar container */
+.navbar-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    width: 100%;
+    transition: all 0.3s ease;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    white-space: nowrap; /* Keep items in a single line */
+    display: none; /* Hidden by default */
+    margin-left: 50px;
+}
+
+.navbar-container.active {
+    display: flex; /* Show when active */
+}
+
+/* Always show navbar container in desktop mode */
+@media (min-width: 769px) {
+    .navbar-container {
+        display: flex; /* Ensure it's displayed on larger screens */
+        flex-direction: row;
+        gap: 20px;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        width: 100%;
+        overflow-x: auto; /* Allow horizontal scrolling */
+        white-space: nowrap; /* Keep items in a single line */
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .menu-button {
+        display: block;
+    }
+
+    .navbar-container {
+        display: flex; /* Display the container on smaller screens */
+        flex-direction: row;
+        overflow-x: auto; /* Horizontal scrolling */
+        white-space: nowrap; /* Prevent items from wrapping */
+        font-size: 20px;
+        padding: 0 1rem; /* Add padding if needed */
+    }
+
+    .navbar-item {
+        display: inline-block;
+    }
+
+    .mobile-menu-overlay {
+        display: block;
+    }
+}
