@@ -7,7 +7,7 @@ const BlogList = () => {
       id: 1,
       title: "Guide to Installing Ubuntu Linux",
       description: "Learn how to install Ubuntu Linux by replacing Windows.",
-      link: "/blogs/ubuntuinstallation",
+      link: "/blogs/guide-to-installing-ubuntu-linux",
     },
     {
       id: 2,
