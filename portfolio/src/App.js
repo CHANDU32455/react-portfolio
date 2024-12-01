@@ -7,6 +7,7 @@ import Bloglist from './pages/Bloglist';
 import GuideToInstallingUbuntuLinux from './blogs/blog1';
 import GettingStartedwithReactJS from './blogs/blog2';
 import MasteringCssGridAndFlexbox from './blogs/blog3';
+import ReactHooks from './blogs/blog4';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path='/blogs/guide-to-installing-ubuntu-linux' element={<GuideToInstallingUbuntuLinux/>} />
           <Route path='/blogs/getting-started-with-reactjs' element={<GettingStartedwithReactJS/>} />
           <Route path='/blogs/mastering-css-grid-and-flexbox' element={<MasteringCssGridAndFlexbox/>} />
+          <Route path='blogs/react-hooks' element={<ReactHooks/>} />
         </Routes>
       </div>
     </Router>

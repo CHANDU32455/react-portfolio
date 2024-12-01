@@ -27,10 +27,21 @@
 }
 
 /* Blog Content */
-.blog-container .blog-content-container {
+.blog-container {
   padding: 20px;
 }
-
+.blog-content-container {
+  display: flex;
+  justify-content: center;
+}
+.blog-content-container-insider {
+  max-width: 1000px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
 .blog-container .section h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
@@ -90,6 +101,52 @@
   margin-top: 30px;
 }
 
+
+.code-snippet {
+  position: relative;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.copy-btn:hover {
+  background-color: #0056b3;
+}
+
+pre {
+  margin: 0;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+code {
+  display: block;
+  font-family: monospace;
+  background-color: inherit; /* Inherit the background color of the parent 'pre' */
+  padding: 0; /* Ensure there is no extra padding within the code */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+
 /* Feedback Form */
 .feedback-container {
   display: flex;
@@ -131,6 +188,9 @@
   gap: 10px;
 }
 
+.ref-image {
+  width: 400px;
+}
 .submit-btn, .like-btn {
   padding: 10px 15px;
   border: none;
@@ -171,6 +231,25 @@
 .like-btn:active {
   animation: pulse 0.4s;
 }
+.navigation-links {
+  display: flex;
+  justify-content: space-between; /* Aligns items to the left and right */
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.nav-link {
+  margin-left: 6px;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #ebeff4;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+
 
 
 
@@ -220,4 +299,7 @@
     font-size: 0.9rem;
     padding: 8px 12px;
   }
+  .navigation-links {
+    justify-content: center; /* Centers the links */
+}
 }

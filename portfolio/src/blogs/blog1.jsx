@@ -34,6 +34,7 @@ const GuideToInstallingUbuntuLinux = () => {
         </p>
         <hr />
         <div className="blog-content-container">
+          <div className="blog-content-container-insider">
           <div className="section">
             <h2>1. Preparing for Installation</h2>
             <h3>Backup Important Data</h3>
@@ -43,7 +44,7 @@ const GuideToInstallingUbuntuLinux = () => {
                 <strong>Windows Key Backup:</strong> Open a terminal with administrator rights and run the following command:
                 <code>wmic path SoftwareLicensingService get OA3xOriginalProductKey</code>
                 Save this key for future reference. <br />
-                <img className="ref-image" src={keyImg} alt="windows-activation-key" />
+                <img src={keyImg} alt="windows-activation-key" />
                 <i><strong>Note:</strong> </i><p>Backing up the Windows product key is a low-effort safety measure to protect your investment in the Windows operating system, ensuring you retain the flexibility to reinstall it later if needed.</p>
               </li>
               <li>
@@ -60,7 +61,7 @@ const GuideToInstallingUbuntuLinux = () => {
               <li>Ensure "Protection On" is switched to "Off."</li>
               <li>This ensures that the drive is no longer encrypted, preventing issues during the Ubuntu installation process and allowing the installer to access and format the drive without restrictions.</li>
             </ol>
-            <img className="ref-image" src={blockerimg} alt="windows-bidlocker-deactivation" />
+            <img src={blockerimg} alt="windows-bidlocker-deactivation" />
           </div>
 
           <div className="section">
@@ -188,6 +189,7 @@ const GuideToInstallingUbuntuLinux = () => {
           <p>
             You now have Ubuntu installed on your device, ready for use. Enjoy the freedom and flexibility of Linux!
           </p>
+        </div>
         </div>
       </div>
       <Contact/>

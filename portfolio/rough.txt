@@ -6,4 +6,4 @@ npm start
 
 git add .
 git commit -m "message"
-git push origin react-portfolio
+git push origin main
