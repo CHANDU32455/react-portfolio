@@ -18,9 +18,9 @@ const BlogList = () => {
     },
     {
       id: 3,
-      title: "Mastering CSS Grid and Flexbox",
+      title: "Mastering Flexbox",
       description:
-        "Learn how to create responsive and flexible layouts using CSS Grid and Flexbox.",
+        "Learn how to create responsive and flexible layouts using Flexbox.",
       link: "/blogs/mastering-css-grid-and-flexbox",
     },
     

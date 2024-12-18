@@ -248,21 +248,18 @@
       flex-direction: column; /* Stack elements vertically */
       text-align: left; /* Center text */
       padding: 0 5%; /* Adjust padding for smaller screens */
+      height: 100vh;
     }
   
     .landing-content {
       order: 1; /* Content box order */
       margin-left: 15px;
-      margin-top: 30px;
+      margin-top: 60px;
       max-width: 100%; /* Full width on small screens */
     }
   
     .landing-image {
-        order: 2; /* Image box order */
-        margin-bottom: 30px; /* Space below image */
-        max-width: 100%; /* Full width for image */
-        overflow: hidden; /* Ensure the image doesn't overflow */
-        position: relative; /* Allow for better positioning adjustments */
+      display: none;
     }      
   
     .landing-button {

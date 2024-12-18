@@ -7,8 +7,8 @@ import tempconimg from '../assets/img/Lovepik_com-380013323-temperature-hot-cold
 import pda from '../assets/img/virtual_assistant.png';
 import kivy from '../assets/img/kivy_yt.png';
 import flutter from '../assets/img/flutter todo.png';
-import phonebook from '../assets/img/—Pngtree—phonebook icon design vector_3648176.png';
-import todo from '../assets/img/—Pngtree—to do list icon cartoon_5080528.png';
+import phonebook from '../assets/img/contactbook.webp';
+import todo from '../assets/img/todo.webp';
 import musicplyrimg from '../assets/img/vecteezy_color-music-free-illustration_22983477.png';
 import vkeyboard from '../assets/img/vkeyboard.png';
 import pythonvkeyboard from '../assets/img/pythonvkeyboard.png';

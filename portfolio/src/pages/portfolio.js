@@ -1,6 +1,7 @@
 import './portfolio.css';
 import Navbar from './navbar';
-import about from '../assets/about.jpeg';
+import about from '../assets/mypic2.jpg';
+// import about from '../assets/about.jpeg';
 import Experience from './experience';
 import Skills from './skills';
 import Projects from './projects';
