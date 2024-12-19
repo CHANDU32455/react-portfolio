@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import '../css/bloglist.css';
 
 const BlogList = () => {
@@ -23,7 +24,20 @@ const BlogList = () => {
         "Learn how to create responsive and flexible layouts using Flexbox.",
       link: "/blogs/mastering-css-grid-and-flexbox",
     },
-    
+    {
+      id: 4,
+      title: "Getting Started with IndexedDB",
+      description:
+        "An overview of IndexedDB, its use cases, and how to perform basic operations.",
+      link: "/blogs/getting-started-with-indexeddb",
+    },
+    {
+      id: 5,
+      title: "IndexedDB Setup",
+      description:
+        "An overview of IndexedDB, its use cases, and how to perform basic operations.",
+      link: "/blogs/indexdb-setup",
+    },
   ];
 
   return (
@@ -34,9 +48,9 @@ const BlogList = () => {
           <div key={blog.id} className="bloglist-tile">
             <h2 className="bloglist-tile-title">{blog.title}</h2>
             <p className="bloglist-tile-description">{blog.description}</p>
-            <a href={blog.link} className="bloglist-tile-link">
+            <Link to={blog.link} className="bloglist-tile-link">
               Read More
-            </a>
+            </Link>
           </div>
         ))}
       </div>
