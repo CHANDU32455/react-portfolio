@@ -7,3 +7,18 @@ npm start
 git add .
 git commit -m "message"
 git push origin main
+
+
+                            <div className="code-snippet">
+                                <button className="copy-btn" onClick={(e) => copyCode('code-navbar', e.target)}>Copy</button>
+                                <pre>
+                                    <code id="code-navbar">
+                                        {`
+code snippet here
+                                        `}
+                                    </code>
+                                </pre>
+                            </div>
+
+
+<img style={{maxWidth:"100%"}} src={overview} alt="index-db overview" />

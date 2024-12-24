@@ -11,7 +11,6 @@ import ReactHooks from './blogs/blog4';
 import IndexedDBGuide from './blogs/indexdb1';
 import IndexedDBsetup from './blogs/indexdb2';
 
-
 function App() {
   return (
     <Router>
