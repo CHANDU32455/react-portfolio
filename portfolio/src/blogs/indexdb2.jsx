@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../css/blog1.css';
 import Footer from "../pages/footer.js";
 import Contact from "../pages/contact.js";
 import copyCode from '../utils/copycode.js';
 import indexedbd_outcome from '../assets/indexdb/p2-outcome.png'
+
 const IndexedDBsetup = () => {
     return (
         <>
@@ -76,12 +78,12 @@ const IndexedDBsetup = () => {
                                 <li>
                                     Add the following code: <br />
                                     <div className="code-snippet">
-                                <button className="copy-btn" onClick={(e) => copyCode('code-functional', e.target)}>Copy</button>
-                                <pre>
-                                 
-<pre>
-<code id="idb-dbsetup">
-    {`
+                                        <button className="copy-btn" onClick={(e) => copyCode('code-functional', e.target)}>Copy</button>
+                                        <pre>
+
+                                            <pre>
+                                                <code id="idb-dbsetup">
+                                                    {`
 import { openDB } from 'idb';
 
 // Initialize the database
@@ -123,10 +125,10 @@ export const deleteData = async (id) => {
     await tx.store.delete(id);
     await tx.done;
 };`}
-</code>
-</pre>
-                                </pre>
-                            </div>
+                                                </code>
+                                            </pre>
+                                        </pre>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -353,6 +355,11 @@ export default App;
                                 Until then, happy coding and exploring IndexedDB!
                             </p>
 
+                        </div>
+                        <div className="navigation-links">
+                            {/* <Link to="/previous-page" className="nav-link">Previous Page</Link> */}
+                            <Link to="/blogs/getting-started-with-indexeddb" className="nav-link">Prev Page</Link>
+                            <Link to="/blogs/Advanced-indexedDB" className="nav-link">Next Page</Link>
                         </div>
                     </div>
                 </div>

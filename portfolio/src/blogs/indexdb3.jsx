@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../css/blog1.css';
 import Footer from "../pages/footer.js";
 import Contact from "../pages/contact.js";
@@ -199,10 +200,13 @@ const IndexedDBadvanced = () => {
                         <div className="section">
                             <h2>Closing Thoughts 💡</h2>
                             <p>
-                                Congratulations! You’re now the master of IndexedDB blob handling. Go forth and build
+                                 By this, i guess we got idea on IndexedDB blob handling. Go forth and build
                                 that gallery, music app, or personal meme collection. Just remember – with great power
                                 comes great responsibility (do not accidentally delete your cat videos). Thats it for today, guess we have covered most parts, If there is anything to talk about feel free to connect with me. We will meet again with some new topic. Till then, happy coding!
                             </p>
+                        </div>
+                        <div className="navigation-links">
+                        <Link to="/blogs/indexdb-setup" className="nav-link">Prev Page</Link>
                         </div>
                     </div>
                 </div>
