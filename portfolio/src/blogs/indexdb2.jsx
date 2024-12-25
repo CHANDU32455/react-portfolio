@@ -76,25 +76,27 @@ const IndexedDBsetup = () => {
                                 <li>
                                     Add the following code: <br />
                                     <div className="code-snippet">
-                                        <button className="copy-btn" onClick={(e) => copyCode('idb-setup', e.target)}>Copy</button>
-                                        <pre>
-                                            <code id="idb-setup">
-                                                {`// src/utils/indexedDB.js
-
+                                <button className="copy-btn" onClick={(e) => copyCode('code-functional', e.target)}>Copy</button>
+                                <pre>
+                                 
+<pre>
+<code id="idb-dbsetup">
+    {`
 import { openDB } from 'idb';
 
 // Initialize the database
 export const initDB = async () => {
     return await openDB('myDatabase', 1, {
         upgrade(db) {
-            if (!db.objectStoreNames.contains('myStore')) {
-                db.createObjectStore('myStore', { keyPath: 'id', autoIncrement: true });
+            if (!db.objectStoreNames.
+            contains('myStore')) {
+                db.createObjectStore('myStore', 
+                { keyPath: 'id', autoIncrement: true });
             }
         },
     });
 };
-
-// Function to add data to the database
+    // Function to add data to the database
 export const addData = async (data) => {
     const db = await initDB();
     const tx = db.transaction('myStore', 'readwrite');
@@ -120,12 +122,11 @@ export const deleteData = async (id) => {
     const tx = db.transaction('myStore', 'readwrite');
     await tx.store.delete(id);
     await tx.done;
-};
-
-`}
-                                            </code>
-                                        </pre>
-                                    </div>
+};`}
+</code>
+</pre>
+                                </pre>
+                            </div>
                                 </li>
                             </ul>
                         </div>
@@ -138,8 +139,7 @@ export const deleteData = async (id) => {
                                 <button className="copy-btn" onClick={(e) => copyCode('idb-setup', e.target)}>Copy</button>
                                 <pre>
                                     <code id="idb-setup">
-                                        {`
-import React, { useState } from 'react';
+                                        {`import React, { useState } from 'react';
 import { addData, getData, getAllData, deleteData } from '../utils/indexedDB';
 
 function DBTest() {
@@ -272,11 +272,7 @@ function DBTest() {
         </div>
     );
 }
-
-
-export default DBTest;
-
-                                                `}
+export default DBTest;`}
                                     </code>
                                 </pre>
                             </div>

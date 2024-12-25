@@ -5,7 +5,7 @@ npm start
 
 
 git add .
-git commit -m "message"
+git commit -m "IndexedDB_advanced"
 git push origin main
 
 
