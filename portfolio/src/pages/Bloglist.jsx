@@ -35,8 +35,15 @@ const BlogList = () => {
       id: 5,
       title: "IndexedDB Setup",
       description:
-        "An overview of IndexedDB, its use cases, and how to perform basic operations.",
+        "A complete setup and basic CRUD operations in IndexedDB.",
       link: "/blogs/indexdb-setup",
+    },
+    {
+      id: 6,
+      title: "IndexedDB Advanced",
+      description:
+        "Advanced operatins on IndexedDB including media files in Blobs way.",
+      link: "/blogs/Advanced-indexedDB",
     },
   ];
 

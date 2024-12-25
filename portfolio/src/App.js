@@ -10,6 +10,7 @@ import MasteringCssGridAndFlexbox from './blogs/blog3';
 import ReactHooks from './blogs/blog4';
 import IndexedDBGuide from './blogs/indexdb1';
 import IndexedDBsetup from './blogs/indexdb2';
+import IndexedDBadvanced from './blogs/indexdb3';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/blogs/react-hooks' element={<ReactHooks/>} />
           <Route path='/blogs/getting-started-with-indexeddb' element={<IndexedDBGuide/>} />
           <Route path='/blogs/indexdb-setup' element={<IndexedDBsetup/>} />
+          <Route path='/blogs/Advanced-indexedDB' element={<IndexedDBadvanced/>} />
         </Routes>
       </div>
     </Router>

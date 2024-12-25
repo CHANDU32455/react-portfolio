@@ -1,26 +1,10 @@
 import React from 'react';
 import '../css/blog1.css'; 
+import copyCode from '../utils/copycode.js';
 import Footer from "../pages/footer.js"; 
 import Contact from "../pages/contact.js";
 
 const FlexboxGuide = () => {
-    // Function to copy code from code block
-    const copyCode = (codeId, buttonElement) => {
-        const codeElement = document.getElementById(codeId);
-        if (codeElement) {
-            navigator.clipboard.writeText(codeElement.textContent).then(() => {
-                // Change button text to "Copied" after copying
-                buttonElement.textContent = "Copied";
-                // Reset the button text after 2 seconds
-                setTimeout(() => {
-                    buttonElement.textContent = "Copy";
-                }, 2000);
-            }).catch(err => {
-                console.error("Failed to copy code: ", err);
-            });
-        }
-    };
-
     return (
         <>
             <div className="blog-container">

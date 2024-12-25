@@ -1,5 +1,6 @@
 import "../css/blog1.css";
 import { Link } from "react-router-dom";
+import copyCode from '../utils/copycode.js';
 import Footer from "../pages/footer.js";
 import Contact from "../pages/contact.js";
 import img1 from "../assets/blog2/Intro to React JS.jpeg";
@@ -7,23 +8,6 @@ import img2 from "../assets/blog2/React JS components.jpeg";
 import img3 from '../assets/blog2/Props in React JS as gift packages from parent to child component.jpeg'
 
 const GettingStartedWithReactJS = () => {
-    // Function to copy the code from the code block
-    const copyCode = (codeId, buttonElement) => {
-        const codeElement = document.getElementById(codeId);
-        if (codeElement) {
-            navigator.clipboard.writeText(codeElement.textContent).then(() => {
-                // Change the button text to "Copied" after copying
-                buttonElement.textContent = "Copied";
-                // Reset the button text after 2 seconds
-                setTimeout(() => {
-                    buttonElement.textContent = "Copy";
-                }, 2000);
-            }).catch(err => {
-                console.error("Failed to copy code: ", err);
-            });
-        }
-    };
-
     return (
         <>
             {/* Blog container */}
