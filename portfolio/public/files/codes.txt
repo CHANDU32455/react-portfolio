@@ -1,0 +1,330 @@
+=================================    TicTac toe  =============================================================
+
+# Initialize the board
+board = [" " for _ in range(9)]  # A list of 9 spaces to represent the 3x3 grid
+
+def print_board():
+    """Prints the board in a 3x3 grid format."""
+    for i in range(3):
+        print("|".join(board[i*3:(i+1)*3]))  # Print rows with separator
+        if i < 2:
+            print("-----")  # Print horizontal divider
+
+def check_winner():
+    """Checks if there's a winner or a tie."""
+    # Define all possible winning combinations
+    winning_combinations = [
+        (0, 1, 2), (3, 4, 5), (6, 7, 8),  # Horizontal lines
+        (0, 3, 6), (1, 4, 7), (2, 5, 8),  # Vertical lines
+        (0, 4, 8), (2, 4, 6)              # Diagonals
+    ]
+    # Check if any winning combination is met
+    for a, b, c in winning_combinations:
+        if board[a] == board[b] == board[c] and board[a] != " ":
+            return board[a]  # Return the winner ('X' or 'O')
+    
+    # Check for a tie
+    if " " not in board:
+        return "Tie"
+    return None  # No winner or tie yet
+
+def play_game():
+    """Main function to handle the game loop."""
+    current_player = "X"  # Player 'X' starts the game
+
+    while True:
+        print_board()
+        # Get the player's move
+        try:
+            move = int(input(f"Player {current_player}, enter your move (1-9): ")) - 1
+            if move < 0 or move >= 9 or board[move] != " ":
+                print("Invalid move. Try again.")
+                continue
+        except ValueError:
+            print("Please enter a valid number (1-9).")
+            continue
+
+        # Make the move
+        board[move] = current_player
+
+        # Check for winner or tie
+        result = check_winner()
+        if result:
+            print_board()
+            if result == "Tie":
+                print("It's a tie!")
+            else:
+                print(f"Player {result} wins!")
+            break
+
+        # Switch the player
+        current_player = "O" if current_player == "X" else "X"
+
+# Start the game
+play_game()
+
+================================     water jug    ==========================================================
+
+def water_jug_solver(jug1_capacity, jug2_capacity, target_amount):
+    """
+    Solve the water jug problem step-by-step.
+    jug1_capacity: Capacity of the first jug
+    jug2_capacity: Capacity of the second jug
+    target_amount: Target amount to measure
+    """
+    jug1, jug2 = 0, 0  # Start with both jugs empty
+    steps = []  # To record the sequence of operations
+
+    while jug1 != target_amount and jug2 != target_amount:
+        if jug1 == 0:  # Fill jug 1 if it's empty
+            jug1 = jug1_capacity
+            steps.append(f"Fill jug1: ({jug1}, {jug2})")
+
+        elif jug2 == jug2_capacity:  # Empty jug 2 if it's full
+            jug2 = 0
+            steps.append(f"Empty jug2: ({jug1}, {jug2})")
+
+        else:  # Pour water from jug 1 to jug 2
+            pour_amount = min(jug1, jug2_capacity - jug2)
+            jug1 -= pour_amount
+            jug2 += pour_amount
+            steps.append(f"Pour jug1 -> jug2: ({jug1}, {jug2})")
+
+        # If the target amount is measured, stop
+        if jug1 == target_amount or jug2 == target_amount:
+            steps.append(f"Target reached: ({jug1}, {jug2})")
+            break
+
+    return steps if jug1 == target_amount or jug2 == target_amount else "Not possible"
+
+# Example usage
+jug1_capacity = 4
+jug2_capacity = 3
+target_amount = 2
+
+solution = water_jug_solver(jug1_capacity, jug2_capacity, target_amount)
+print("Solution steps:" if solution != "Not possible" else "No solution")
+for step in solution:
+    print(step)
+
+================================     monkey banana   ==========================================================
+state-based approach
+
+def monkey_banana_problem():
+    """
+    Solves the monkey-banana problem using state transitions.
+    """
+    # Initial state: (monkey_position, box_position, banana_status)
+    # monkey_position: 'at door', 'at middle', 'on box'
+    # box_position: 'at middle', 'under banana'
+    # banana_status: 'hanging', 'in hand'
+    state = ('at door', 'at middle', 'hanging')
+
+    print(f"Initial state: {state}")
+
+    # Step 1: Move the monkey to the middle of the room
+    state = ('at middle', state[1], state[2])
+    print(f"Monkey moves to the middle: {state}")
+
+    # Step 2: Push the box under the banana
+    state = (state[0], 'under banana', state[2])
+    print(f"Monkey pushes the box under the banana: {state}")
+
+    # Step 3: Climb on the box
+    state = ('on box', state[1], state[2])
+    print(f"Monkey climbs on the box: {state}")
+
+    # Step 4: Grab the banana
+    state = (state[0], state[1], 'in hand')
+    print(f"Monkey grabs the banana: {state}")
+
+    print("\nFinal state: Monkey has the banana!")
+
+# Run the solution
+monkey_banana_problem()
+
+functional based,..........
+
+# Functions for each action
+def move_monkey(state, target_position):
+    """
+    Move the monkey to the target position.
+    """
+    monkey_position, box_position, banana_status = state
+    return (target_position, box_position, banana_status)
+
+def push_box(state):
+    """
+    Push the box to the position under the banana.
+    """
+    monkey_position, box_position, banana_status = state
+    if monkey_position == box_position:
+        return (monkey_position, 'under banana', banana_status)
+    else:
+        return state  # Box can't be pushed if monkey isn't at its position
+
+def climb_box(state):
+    """
+    Monkey climbs on the box.
+    """
+    monkey_position, box_position, banana_status = state
+    if box_position == 'under banana':
+        return ('on box', box_position, banana_status)
+    else:
+        return state  # Can't climb if the box isn't under the banana
+
+def grab_banana(state):
+    """
+    Monkey grabs the banana.
+    """
+    monkey_position, box_position, banana_status = state
+    if monkey_position == 'on box' and box_position == 'under banana':
+        return (monkey_position, box_position, 'in hand')
+    else:
+        return state  # Can't grab if not on the box under the banana
+
+# Main function to solve the problem
+def solve_monkey_banana_problem():
+    """
+    Solves the Monkey-Banana Problem.
+    """
+    # Initial state: (monkey_position, box_position, banana_status)
+    state = ('at door', 'at middle', 'hanging')
+
+    print(f"Initial state: {state}")
+
+    # Step 1: Move the monkey to the middle
+    state = move_monkey(state, 'at middle')
+    print(f"Monkey moves to the middle: {state}")
+
+    # Step 2: Push the box under the banana
+    state = push_box(state)
+    print(f"Monkey pushes the box under the banana: {state}")
+
+    # Step 3: Climb on the box
+    state = climb_box(state)
+    print(f"Monkey climbs on the box: {state}")
+
+    # Step 4: Grab the banana
+    state = grab_banana(state)
+    print(f"Monkey grabs the banana: {state}")
+
+    # Final state
+    if state[2] == 'in hand':
+        print("\nFinal state: Monkey has the banana!")
+    else:
+        print("\nFinal state: Failed to grab the banana.")
+
+# Run the solution
+solve_monkey_banana_problem()
+
+============================   8 Queens   =========================================================
+
+def print_solution(positions):
+    """
+    Print the chessboard based on the positions of queens.
+    """
+    n = len(positions)
+    for row in range(n):
+        line = ""
+        for col in range(n):
+            if col == positions[row]:
+                line += "Q "
+            else:
+                line += ". "
+        print(line)
+    print("\n")
+
+def is_safe(positions, current_row, current_col):
+    """
+    Check if placing a queen at (current_row, current_col) is safe.
+    """
+    for row in range(current_row):
+        col = positions[row]
+        # Check column and diagonal conflicts
+        if col == current_col or abs(col - current_col) == abs(row - current_row):
+            return False
+    return True
+
+def solve_n_queens(n, row=0, positions=[]):
+    """
+    Recursively solve the N-Queens problem.
+    """
+    if row == n:  # All queens placed
+        print_solution(positions)
+        return True
+
+    found_solution = False
+    for col in range(n):
+        if is_safe(positions, row, col):  # Check if it's safe to place a queen
+            positions.append(col)  # Place the queen
+            found_solution = solve_n_queens(n, row + 1, positions) or found_solution
+            positions.pop()  # Backtrack
+
+    return found_solution
+
+# Solve the 8 Queens Problem
+solve_n_queens(8)
+
+============================  TSP  ===============================================
+
+def tsp_nearest_neighbor(graph, start=0):
+    """
+    Solves the Traveling Salesman Problem using the Nearest Neighbor heuristic.
+    
+    Parameters:
+        graph: A 2D list where graph[i][j] represents the cost of traveling 
+               from city i to city j.
+        start: The starting city (default is 0).
+               
+    Returns:
+        A tuple containing the total cost and the path taken.
+    """
+    num_cities = len(graph)
+    visited = [False] * num_cities
+    path = []
+    total_cost = 0
+
+    # Start from the initial city
+    current_city = start
+    path.append(current_city)
+    visited[current_city] = True
+
+    for _ in range(num_cities - 1):
+        # Find the nearest unvisited city
+        nearest_city = None
+        min_cost = float('inf')
+        for city in range(num_cities):
+            if not visited[city] and graph[current_city][city] < min_cost:
+                nearest_city = city
+                min_cost = graph[current_city][city]
+        
+        # Move to the nearest city
+        path.append(nearest_city)
+        total_cost += min_cost
+        visited[nearest_city] = True
+        current_city = nearest_city
+
+    # Return to the starting city
+    total_cost += graph[current_city][start]
+    path.append(start)
+
+    return total_cost, path
+
+# Input the number of cities
+num_cities = int(input("Enter the number of cities: "))
+
+# Input the distance matrix
+print("Enter the distance matrix row by row (separated by spaces):")
+graph = []
+for i in range(num_cities):
+    row = list(map(int, input().split()))
+    graph.append(row)
+
+# Solve the TSP using Nearest Neighbor
+total_cost, path = tsp_nearest_neighbor(graph)
+
+# Display results
+print(f"Total cost: {total_cost}")
+print(f"Path taken: {path}")
+

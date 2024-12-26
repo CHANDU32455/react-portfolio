@@ -12,6 +12,7 @@ import IndexedDBGuide from './blogs/indexdb1';
 import IndexedDBsetup from './blogs/indexdb2';
 import IndexedDBadvanced from './blogs/indexdb3';
 
+import Rough from './components/rough';
 function App() {
   return (
     <Router>
@@ -20,6 +21,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/portfolio" element={<PortfolioWebsite />} />
           <Route path="/resume" element={<Resume />} />
+
+          <Route path='/rough' element={< Rough/>} />
 
           <Route path='/blogs' element={<Bloglist/>} />
           <Route path='/blogs/guide-to-installing-ubuntu-linux' element={<GuideToInstallingUbuntuLinux/>} />
