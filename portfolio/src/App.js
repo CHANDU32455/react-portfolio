@@ -4,6 +4,7 @@ import Landing from './pages/landing';
 import PortfolioWebsite from './pages/portfolio';
 import Resume from './pages/resume';
 import Bloglist from './pages/Bloglist';
+import ServicesList from './pages/serviceslist';
 import GuideToInstallingUbuntuLinux from './blogs/blog1';
 import GettingStartedwithReactJS from './blogs/blog2';
 import MasteringCssGridAndFlexbox from './blogs/blog3';
@@ -32,6 +33,8 @@ function App() {
           <Route path='/blogs/getting-started-with-indexeddb' element={<IndexedDBGuide/>} />
           <Route path='/blogs/indexdb-setup' element={<IndexedDBsetup/>} />
           <Route path='/blogs/Advanced-indexedDB' element={<IndexedDBadvanced/>} />
+
+          <Route path='/services_list' element={< ServicesList />} />
         </Routes>
       </div>
     </Router>

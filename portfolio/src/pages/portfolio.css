@@ -822,6 +822,131 @@ header img {
 }
 
 
+/* Services Component Scoped Styles */
+.services-section {
+  background-color: #1e1e1e; /* Dark theme */
+  color: #fff; /* Light text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  min-height: 100vh; /* Full viewport height */
+  box-sizing: border-box;
+}
+
+.services-component {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  gap: 2rem;
+}
+
+/* Text Content */
+.services-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.services-heading {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.services-info {
+  font-size: 1.2rem;
+  color: #cccccc; /* Lighter text for readability */
+  line-height: 1.6;
+}
+
+.services-btn {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 24px;
+  background-color: #f39c12; /* Yellow button */
+  max-width: 200px;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.services-btn:hover {
+  background-color: #e67e22; /* Darker yellow on hover */
+  transform: scale(1.05); /* Slightly enlarge */
+}
+
+/* Image Content */
+.services-picture {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.services-picture img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services-component {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .services-details {
+      align-items: center;
+      text-align: center;
+  }
+
+  .services-picture {
+      margin-top: 2rem;
+  }
+
+  .services-heading {
+      font-size: 2rem;
+  }
+
+  .services-info {
+      font-size: 1rem;
+  }
+
+  .services-btn {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-heading {
+      font-size: 1.8rem;
+  }
+
+  .services-info {
+      font-size: 0.9rem;
+  }
+
+  .services-btn {
+      font-size: 0.8rem;
+      padding: 8px 16px;
+  }
+
+  .services-picture img {
+      max-width: 100%; /* Fit the image to the smaller screen */
+  }
+}
+
 .contact-section {
   background-color: #272626;
   padding: 40px 20px; /* Padding around the section */

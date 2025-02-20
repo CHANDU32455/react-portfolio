@@ -6,6 +6,7 @@ import Experience from './experience';
 import Skills from './skills';
 import Projects from './projects';
 import Blog from './blogs';
+import Services from './services';
 import Contact from './contact';
 import Footer from './footer';
 const PortfolioWebsite = () => {
@@ -86,6 +87,7 @@ const PortfolioWebsite = () => {
                 <Skills />
                 <Projects />
                 <Blog />
+                <Services />
                 <Contact />
                 <Footer />
             </div>
