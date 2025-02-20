@@ -13,8 +13,6 @@ const ServicesList = () => {
         location: '',  // Added location field
     });
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
 
     const services = [
         {
@@ -67,25 +65,23 @@ const ServicesList = () => {
 
     const sendMessage = () => {
         setLoading(true);
-        setError('');
-        setSuccess('');
-
+    
         const { name, email, purpose, service, description, location } = formData;
-
+    
         // Validate input
         if (!name || !email || !purpose || !service || !description || !location) {
-            setError("Please fill in all the fields.");
+            alert("Please fill in all the fields.");
             setLoading(false);
             return;
         }
-
+    
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
-            setError("Please enter a valid email address.");
+            alert("Please enter a valid email address.");
             setLoading(false);
             return;
         }
-
+    
         const templateParams = {
             from_name: name,
             from_email: email,
@@ -95,17 +91,17 @@ const ServicesList = () => {
             location: location,  // Added location to the template
             to_email: "cchantigadu75@gmail.com",
         };
-
+    
         sendEmail(templateParams, 
             (response) => {
-                setSuccess("Email successfully sent!");
+                alert("Email successfully sent!");
                 setFormData({ name: '', email: '', purpose: '', service: '', description: '', location: '' });
             },
             (error) => {
-                setError("Failed to send email: " + error.text);
+                alert("Failed to send email: " + error.text);
             }
         );
-
+    
         setLoading(false);
         setModalOpen(false);  // Close the modal after submission
     };
@@ -210,8 +206,6 @@ const ServicesList = () => {
                                 {loading ? 'Sending...' : 'Submit Request'}
                             </button>
                         </form>
-                        {error && <p className="error-message">{error}</p>}
-                        {success && <p className="success-message">{success}</p>}
                     </div>
                 </div>
             )}
