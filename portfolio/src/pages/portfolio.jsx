@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { db } from "../firebase"; // Import Firestore instance
 import { doc, updateDoc, increment } from "firebase/firestore";
 import "./portfolio.css";
@@ -116,6 +116,7 @@ const PortfolioWebsite = () => {
                 <Skills />
                 <Projects />
                 <Blog />
+                <Services />
                 <Contact />
                 <Footer />
             </div>
