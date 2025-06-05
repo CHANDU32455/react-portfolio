@@ -116,7 +116,6 @@ const PortfolioWebsite = () => {
                 <Skills />
                 <Projects />
                 <Blog />
-                <Services />
                 <Contact />
                 <Footer />
             </div>
