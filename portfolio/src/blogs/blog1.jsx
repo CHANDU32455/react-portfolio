@@ -2,7 +2,7 @@ import React from "react";
 import Contact from '../pages/contact.js';
 import { useState } from "react";
 import "../css/blog1.css"; // Ensure the CSS file is named properly
-import Footer from '../pages/footer.js';
+import Footer from "../pages/footer.jsx";
 import keyImg from '../assets/blog1/actikey.png';
 import blockerimg from '../assets/blog1/blocker-status.png';
 import rufus_site from '../assets/blog1/rufus.png';

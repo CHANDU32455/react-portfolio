@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import resume from '../assets/ChanduChitteti.pdf';
+import resume from '../assets/Chandu_Chitteti_Resume.pdf';
 
 const Resume = () => {
   const [dimensions, setDimensions] = useState({

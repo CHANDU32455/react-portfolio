@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import TrafficHandling from '../components/TrafficHandling';
 import '../css/Navbar.css'; // Import the external CSS file
 import logo from '../assets/logo.jpg'; // Adjust the path if needed
 
@@ -39,6 +40,9 @@ const Navbar = () => {
                     <a href="#projects" className="navbar-item">Projects</a>
                     <a href="#blogs" className='navbar-item'>Blogs</a>
                     <a href="#contact" className="navbar-item">Contact</a>
+                </div>
+                <div className="navbar-traffic">
+                    <TrafficHandling />
                 </div>
             </nav>
         </>

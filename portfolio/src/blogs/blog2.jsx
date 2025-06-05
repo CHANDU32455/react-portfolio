@@ -1,7 +1,7 @@
 import "../css/blog1.css";
 import { Link } from "react-router-dom";
 import copyCode from '../utils/copycode.js';
-import Footer from "../pages/footer.js";
+import Footer from "../pages/footer.jsx";
 import Contact from "../pages/contact.js";
 import img1 from "../assets/blog2/Intro to React JS.jpeg";
 import img2 from "../assets/blog2/React JS components.jpeg";

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/blog1.css';
-import Footer from "../pages/footer.js";
+import Footer from "../pages/footer.jsx";
 import Contact from "../pages/contact.js";
 import copyCode from '../utils/copycode.js';
 import indexedbd_outcome from '../assets/indexdb/p2-outcome.png'
