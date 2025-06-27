@@ -30,11 +30,10 @@ const Contact = () => {
       return;
     }
 
-    // Template params including title and time
     const templateParams = {
       title: "Contact Form Submission",
-      from_name: name,
-      from_email: email,
+      name: name,
+      email: email,
       message: message,
       time: new Date().toLocaleString(),
     };
