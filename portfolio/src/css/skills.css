@@ -1,0 +1,159 @@
+.skills-section {
+  padding: 5rem 2rem;
+  background-color: #1e1e1e;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.skills-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading */
+.skills-subtitle {
+  font-size: 2.6rem;
+  margin-bottom: 1.2rem;
+  color: #f39c12;
+  text-align: center;
+}
+
+/* Skill Tiles Slider */
+.skill-slider {
+  width: 100%;
+  overflow: hidden;
+  padding: 1.5rem 0;
+}
+
+.skill-track {
+  display: flex;
+  width: max-content;
+  animation: scrollSkills 30s linear infinite;
+}
+
+.skill-slider:hover .skill-track {
+  animation-play-state: paused;
+}
+
+.skill-tile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #2a2a2a;
+  padding: 1.2rem 1.8rem;
+  border-radius: 14px;
+  font-size: 1.4rem;
+  white-space: nowrap;
+  color: #fff;
+  margin-right: 1.2rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.skill-tile:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(243, 156, 18, 0.5);
+}
+
+.skill-tile .icon {
+  font-size: 2.2rem;
+  color: #f39c12;
+}
+
+.skill-tile .label {
+  font-weight: 500;
+    color: #e0e0e0;
+}
+
+/* Bottom section - desc + image */
+.skills-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.skills-text {
+  flex: 1;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+  max-width: 600px;
+}
+
+.skills-image {
+  flex: 1;
+  max-width: 400px;
+}
+
+.image {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation keyframes */
+@keyframes scrollSkills {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .skills-bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .skills-text {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .skills-image {
+    margin-top: 1rem;
+    max-width: 80%;
+  }
+
+  .skill-track {
+    animation-duration: 40s;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .skills-subtitle {
+    font-size: 1.6rem;
+  }
+
+  .skills-text {
+    font-size: 1rem;
+  }
+
+  .skill-tile {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    margin-right: 0.9rem;
+  }
+
+  .skill-tile .icon {
+    font-size: 1.6rem;
+  }
+
+  .image {
+    max-width: 300px;
+  }
+
+  .skill-track {
+    animation-duration: 50s;
+  }
+}

@@ -2,16 +2,17 @@ import React, { useState, useEffect, useMemo } from 'react';
 import mypic from '../assets/mypic2.jpg';
 import { useNavigate } from 'react-router-dom';
 import '../css/landing.css';
+
 function Landing() {
   const titles = useMemo(() => [
     "WEB DESIGNER",
     "REACT DEVELOPER",
     "DJANGO DEVELOPER",
     "FLUTTER LOVER",
+    "ML ENTHUSIAST",
   ], []);
 
   const navigate = useNavigate();
-
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -27,7 +28,7 @@ function Landing() {
       }
 
       if (!isDeleting && displayedText === currentTitle) {
-        setTimeout(() => setIsDeleting(true), 2000); // Pause before deleting
+        setTimeout(() => setIsDeleting(true), 2000);
       } else if (isDeleting && displayedText === '') {
         setIsDeleting(false);
         setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length);
@@ -38,34 +39,47 @@ function Landing() {
     return () => clearInterval(typingInterval);
   }, [displayedText, isDeleting, currentTitleIndex, titles]);
 
-  const gotohome = () => {
-    navigate('/portfolio');
-  };
-  const checkoutResume = () => {
-    navigate('/resume');
-  };
+  const gotohome = () => navigate('/portfolio');
+  const checkoutResume = () => navigate('/resume');
+
   return (
     <main className="landing-container">
       <button className="cta resume-button" onClick={checkoutResume}>
         <span className="hover-underline-animation"> Resume </span>
         <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">
-          <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(30)"></path>
+          <path id="Path_10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(30)"></path>
         </svg>
       </button>
+
       <div className="landing-content">
         <h1 className="landing-title">Hi, I'm Chandu</h1>
         <h2 className="landing-subtitle">I'M A {displayedText}<span className="cursor">|</span></h2>
         <p className="landing-description">
           I'm Chandu, a web developer skilled in React, Django, and desktop app development. I enjoy creating clean, responsive designs and building efficient applications that make a difference.
         </p>
-        <button class="landing-button" onClick={gotohome}>
-          <div class="blob1"></div>
-          <div class="blob2"></div>
-          <div class="inner">Checkout My Portfolio</div>
-        </button>
+
+        {/* Desktop button (below paragraph) */}
+        <div className="landing-button-desktop">
+          <button className="landing-button" onClick={gotohome}>
+            <div className="blob1"></div>
+            <div className="blob2"></div>
+            <div className="inner">Checkout My Portfolio</div>
+          </button>
+        </div>
       </div>
+
+      {/* Image */}
       <div className="landing-image">
-      <img style={{ maxWidth: "450px" }} src={mypic} alt="Web Designer" />
+        <img src={mypic} alt="Web Designer" />
+      </div>
+
+      {/* Mobile-only button (after image) */}
+      <div className="landing-button-mobile">
+        <button className="landing-button" onClick={gotohome}>
+          <div className="blob1"></div>
+          <div className="blob2"></div>
+          <div className="inner">Checkout My Portfolio</div>
+        </button>
       </div>
     </main>
   );

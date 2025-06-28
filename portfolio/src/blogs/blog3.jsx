@@ -2,8 +2,7 @@ import React from 'react';
 import '../css/blog1.css'; 
 import copyCode from '../utils/copycode.js';
 import Footer from '../pages/footer.jsx';
-import Contact from "../pages/contact.js";
-
+import Contact from '../pages/contact.jsx';
 const FlexboxGuide = () => {
     return (
         <>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import TrafficHandling from '../components/TrafficHandling';
+import useMediaQuery from '../utils/useMediaQuery'; // Custom hook for media queries
 import '../css/Navbar.css'; // Import the external CSS file
 import logo from '../assets/logo.jpg'; // Adjust the path if needed
 
 const Navbar = () => {
+    const isDesktop = useMediaQuery('(min-width: 769px)');
     const [showNavbar, setShowNavbar] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -41,9 +43,11 @@ const Navbar = () => {
                     <a href="#blogs" className='navbar-item'>Blogs</a>
                     <a href="#contact" className="navbar-item">Contact</a>
                 </div>
-                <div className="navbar-traffic">
-                    <TrafficHandling />
-                </div>
+                {isDesktop && (
+                    <div className="navbar-traffic">
+                        <TrafficHandling />
+                    </div>
+                )}
             </nav>
         </>
     );

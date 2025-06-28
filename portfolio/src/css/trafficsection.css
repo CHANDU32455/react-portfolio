@@ -1,0 +1,124 @@
+/* Traffic Section aligned like contact section */
+.traffic-section {
+    background-color: #272626;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Left content (title + desc) */
+.traffic__content {
+    flex: 1;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Title styling */
+.traffic-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    color: #f39c12;
+    font-weight: 600;
+}
+
+/* Description text */
+.traffic-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* Right widget card */
+.traffic__container {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Inside the card */
+.traffic-widget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Button styling inside the component */
+.traffic-widget button {
+    background-color: #f39c12;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.traffic-widget button:hover {
+    background-color: #e67e22;
+}
+
+/* Tablet view */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .traffic-section {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .traffic__content {
+        width: 45%;
+        margin-bottom: 0;
+    }
+
+    .traffic__container {
+        max-width: 90%;
+        padding: 30px;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .traffic-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .traffic__content {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .traffic__container {
+        max-width: 100%;
+        width: 90%;
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .traffic-description {
+        font-size: 0.95rem;
+    }
+
+    .traffic-title {
+        font-size: 1.5rem;
+    }
+
+    .traffic-widget button {
+        width: 100%;
+    }
+}
+
+/* Optional: hide if not mobile (since navbar shows it) */
+@media (min-width: 769px) {
+    .traffic-section.hidden-desktop {
+        display: none;
+    }
+}

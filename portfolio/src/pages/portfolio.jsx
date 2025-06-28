@@ -5,7 +5,7 @@ import "./portfolio.css";
 import Navbar from "./navbar";
 import about from "../assets/mypic2.jpg";
 import Experience from "./experience";
-import Skills from "./skills";
+import Skills from "./skills_scrolling";
 import Projects from "./projects";
 import Blog from "./blogs";
 import Contact from "./contact";

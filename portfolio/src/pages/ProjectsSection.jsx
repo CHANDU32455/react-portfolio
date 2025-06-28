@@ -183,6 +183,10 @@ const ProjectsSection = () => {
               <h4 style={tileTitle}>Movie Recommender</h4>
               <p style={tileDesc}>Content-based filtering engine with a user-friendly interface to suggest movies based on preferences.</p>
             </a>
+            <a href="https://github.com/CHANDU32455/Cloudcredits/tree/main/HousePricePrediction" target="_blank" rel="noopener noreferrer" className="project-tile-link">
+              <h4 style={tileTitle}>House Price Predictor</h4>
+              <p style={tileDesc}>Predicts house prices using regression models, with a simple UI for inputting property details.</p>
+            </a>
           </div>
         </div>
 
@@ -209,6 +213,15 @@ const ProjectsSection = () => {
               <h4 style={tileTitle}>HTML/CSS Portfolio</h4>
               <p style={tileDesc}>A minimal, responsive personal webpage showcasing my bio and skills.</p>
             </a>
+          </div>
+        </div>
+
+        <div style={projectTileStyle}>
+          <h3 style={tileHeader}>My Work</h3>
+          <p style={tilePara}>
+            this repo highlights my journey through various projects, from coding challenges to desktop applications and React interfaces. It's a testament to my growth as a developer and my passion for continuous learning.
+          </p>
+          <div style={tileGrid}>
             <a href="https://github.com/CHANDU32455/my-work" target="_blank" rel="noopener noreferrer" className="project-tile-link">
               <h4 style={tileTitle}>My Work Showcase</h4>
               <p style={tileDesc}>A collection of side experiments—from LeetCode clones to desktop assistants, music players, React UIs, PyQt tools, and more.</p>
