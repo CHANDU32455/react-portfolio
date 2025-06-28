@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import mypic from '../assets/mypic2.jpg';
 import { useNavigate } from 'react-router-dom';
 import '../css/landing.css';

@@ -1,5 +1,14 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
 .portfolio-website {
-    height: 200vh; /* Total height for demonstration */
+    height: 200vh;
 }
 
 section {
@@ -28,202 +37,203 @@ header img {
 
 /* From Uiverse.io by barisdogansutcu */ 
 .connectnow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 0 10px;
-    color: white;
-    text-shadow: 2px 2px rgb(116, 116, 116);
-    text-transform: uppercase;
-    cursor: pointer;
-    border: solid 2px black;
-    letter-spacing: 1px;
-    font-weight: 600;
-    font-size: 17px;
-    background-color: hsl(49deg 98% 60%);
-    border-radius: 50px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s ease;
-  }
-  
-  .connectnow:active {
-    transform: scale(0.9);
-    transition: all 100ms ease;
-  }
-  
-  .connectnow svg {
-    transition: all 0.5s ease;
-    z-index: 2;
-  }
-  
-  .connect {
-    transition: all 0.5s ease;
-    transition-delay: 300ms;
-    font-size: 15px;
-  }
-  
-  .connectnow:hover svg {
-    transform: scale(3) translate(50%);
-  }
-  
-  .now {
-    position: absolute;
-    left: 0;
-    transform: translateX(-100%);
-    transition: all 0.5s ease;
-    z-index: 2;
-  }
-  
-  .connectnow:hover .now {
-    transform: translateX(10px);
-    transition-delay: 300ms;
-  }
-  
-  .connectnow:hover .connect {
-    transform: translateX(200%);
-    transition-delay: 300ms;
-  }
-  .home-section {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: flex-start; /* Align content to the left */
-    align-items: center;
-    background-image: url('../assets//mypic3.jpg');
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    padding-left: 50px; /* Add some padding to give space from the edge */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
+  color: white;
+  text-shadow: 2px 2px rgb(116, 116, 116);
+  text-transform: uppercase;
+  cursor: pointer;
+  border: solid 2px black;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 17px;
+  background-color: hsl(49deg 98% 60%);
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  margin-top: 20px;
+  width: fit-content;
+  max-width: 100%;
 }
 
+.connectnow:active {
+  transform: scale(0.9);
+  transition: all 100ms ease;
+}
+
+.connectnow svg {
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.connect {
+  transition: all 0.5s ease;
+  transition-delay: 300ms;
+  font-size: 15px;
+}
+
+.connectnow:hover svg {
+  transform: scale(3) translate(50%);
+}
+
+.now {
+  position: absolute;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.connectnow:hover .now {
+  transform: translateX(10px);
+  transition-delay: 300ms;
+}
+
+.connectnow:hover .connect {
+  transform: translateX(200%);
+  transition-delay: 300ms;
+}
+
+/* Home section */
+.home-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url('../assets//mypic3.jpg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-left: 50px;
+  padding-right: 20px;
+  width: 100%;
+}
+
+/* Overlay content */
 .overlay {
-    background-color: rgba(0, 0, 0, 0.5); /* Greyish overlay */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Vertically center the content */
-    align-items: flex-start; /* Align items to the left */
-    text-align: left; /* Ensure text alignment is left */
-    padding-left: 20px; /* Match padding to the section */
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
-.connectnow {
-    margin-top: 20px;
-    width: 169px;
-  }
-  /* Text styling */
-  .home-section .overlay h1 {
-    font-size: 2.5rem;
-    color: #ffffff;
-    margin-bottom: 0px;
-  }
-  
-  .home-section .overlay h2 {
-    font-size: 1.8rem;
-    color: #fdd835;
-    margin-bottom: 0px;
-  }
-  
-  .home-section .overlay p {
-    font-size: 1.4rem;
-    color: #ffffff;
-    margin-bottom: 20px;
-    line-height: 1.6;
-    max-width: 600px;
-  }
+/* Text styles */
+.home-section .overlay h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 0px;
+}
 
+.home-section .overlay h2 {
+  font-size: 1.8rem;
+  color: #fdd835;
+  margin-bottom: 0px;
+}
 
+.home-section .overlay p {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* Button inside overlay */
 .overlay .btn {
-    font-size: 1rem; /* Appropriately sized button */
-    padding: 0.6rem 1.5rem;
-    margin-top: 1rem;
+  font-size: 1rem;
+  padding: 0.6rem 1.5rem;
+  margin-top: 1rem;
 }
 
-/* Responsive styles for smaller screens */
-@media (max-width: 768px) {
+/* Media queries */
+
+/* Tablet */
+@media (max-width: 1024px) {
   .home-section {
-      padding-left: 3%;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .overlay {
-      padding: 2rem 1.5rem; /* Reduce padding */
-      align-items: left; /* Center-align items */
-      text-align: left;
+    padding: 2rem 1.5rem;
+    align-items: flex-start;
+    text-align: left;
   }
 
   .overlay h1 {
-      font-size: 2rem; /* Reduce heading size */
+    font-size: 2rem;
   }
 
   .overlay h2 {
-      font-size: 1.8rem; /* Reduce subheading size */
+    font-size: 1.6rem;
   }
 
   .overlay p {
-      font-size: 1rem; /* Smaller paragraph text */
-  }
-
-  .overlay .btn {
-      font-size: 0.9rem;
-      padding: 0.5rem 1.2rem;
+    font-size: 1.2rem;
   }
 
   .connectnow {
-      font-size: 15px;
-      padding: 0.4rem 8px;
-      gap: 5px; /* Decrease spacing between items */
+    font-size: 15px;
+    padding: 0.4rem 8px;
+    gap: 5px;
   }
 
   .connectnow .connect, .connectnow .now {
-      font-size: 13px;
+    font-size: 13px;
   }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
   .home-section {
     padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .overlay {
+    padding: 2rem 1rem;
+    width: 100%;
+  }
+
+  .overlay h1 {
+    font-size: 1.8rem;
+  }
+
+  .overlay h2 {
+    font-size: 1.5rem;
+  }
+
+  .overlay p {
+    font-size: 1rem;
+  }
+
+  .connectnow {
+    font-size: 14px;
+    padding: 0.4rem 6px;
+    gap: 4px;
+  }
+
+  .connectnow .connect, .connectnow .now {
+    font-size: 12px;
+  }
 }
 
-.overlay {
-    padding: 2rem 1.5rem; /* Reduce padding */
-    align-items: left; /* Center-align items */
-    text-align: left;
-    width: auto;
-}
-
-.overlay h1 {
-    font-size: 2rem; /* Reduce heading size */
-}
-
-.overlay h2 {
-    font-size: 1.8rem; /* Reduce subheading size */
-}
-
-.overlay p {
-    font-size: 1rem; /* Smaller paragraph text */
-}
-
-.overlay .btn {
-    font-size: 0.9rem;
-    padding: 0.5rem 1.2rem;
-}
-
-.connectnow {
-    font-size: 15px;
-    padding: 0.4rem 8px;
-    gap: 5px; /* Decrease spacing between items */
-}
-
-.connectnow .connect, .connectnow .now {
-    font-size: 13px;
-}
-}
 
 
 .about-me {
@@ -704,7 +714,6 @@ header img {
   justify-content: center;
   align-items: center;
   padding: 4rem 2rem;
-  min-height: 100vh; /* Full viewport height */
   box-sizing: border-box;
 }
 

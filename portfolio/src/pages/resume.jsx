@@ -1,70 +1,69 @@
-import React, { useEffect, useState } from 'react';
-import resume from '../assets/Chandu_Chitteti_Resume.pdf';
+import React, { useState, useEffect } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
+
+// Set worker from CDN
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const Resume = () => {
-  const [dimensions, setDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const [numPages, setNumPages] = useState(null);
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
+    const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Dynamic styles based on dimensions
-  const topBarStyle = {
-    backgroundColor: '#333',
-    color: '#fff',
-    padding: `${Math.min(dimensions.height * 0.02, 20)}px`, // Dynamic padding
-    textAlign: 'center',
-    fontSize: `${Math.min(dimensions.width * 0.05, 24)}px`, // Font size responsive to width
-    flexShrink: 0,
-  };
-
-  const iframeStyle = {
-    width: '100%',
-    height: `${dimensions.height * 0.85}px`, // Dynamic height based on viewport height
-    border: 'none',
-    minWidth: '600px', // Minimum width to allow scrolling
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
   };
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100vh',
-      overflow: 'hidden',
-    }}>
-      {/* Top Bar */}
-      <div style={topBarStyle}>
-        My Resume
+    <div style={{ padding: '1rem', textAlign: 'center' }}>
+      <h2 style={{ color: '#333', marginBottom: '1rem' }}>My Resume</h2>
+
+      <div
+        style={{
+          overflowX: 'auto',
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Document
+          file="/Chandu_Chitteti_Resume.pdf"
+          onLoadSuccess={onDocumentLoadSuccess}
+          loading="Loading resume..."
+          error="Failed to load the resume."
+        >
+          {Array.from(new Array(numPages || 0), (_, index) => (
+            <Page
+              key={`page_${index + 1}`}
+              pageNumber={index + 1}
+              width={Math.min(width * 0.9, 800)}
+              renderTextLayer={false}
+              renderAnnotationLayer={false}
+            />
+          ))}
+        </Document>
       </div>
 
-      {/* Horizontal Scrolling Area */}
-      <div style={{
-        overflowX: 'auto',
-        flex: '1',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '10px',
-      }}>
-        <iframe
-          src={resume} // Directly set the src to the imported PDF
-          title="Resume PDF"
-          style={iframeStyle}
-        ></iframe>
-      </div>
+      <a
+        href="/Chandu_Chitteti_Resume.pdf"
+        download
+        style={{
+          marginTop: '1rem',
+          color: '#fdd835',
+          fontWeight: 'bold',
+          fontSize: '1.1rem',
+          textDecoration: 'underline',
+        }}
+      >
+        Download Resume
+      </a>
     </div>
   );
 };
