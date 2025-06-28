@@ -14,9 +14,15 @@ import IndexedDBsetup from './blogs/indexdb2';
 import IndexedDBadvanced from './blogs/indexdb3';
 import Rough from './components/rough';
 
+import BuyMeACoffeeWidget from './components/BuyMeACoffeeWidget';
+
+
 function App() {
   return (
+    <>
+    
     <Router>
+      <BuyMeACoffeeWidget />
       <div className="App">
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -40,6 +46,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </>
   );
 }
 
