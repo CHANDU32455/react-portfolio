@@ -18,7 +18,6 @@ import Rough from './components/rough';
 function App() {
   return (
     <>
-    
     <Router>
       {/*<BuyMeACoffeeWidget /> */}
       <div className="App">

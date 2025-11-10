@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useMemo} from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { db } from "../firebase";
 import { doc, getDoc, updateDoc, increment } from "firebase/firestore";
 import { FiThumbsUp, FiEye } from "react-icons/fi";
 import { FaThumbsUp } from "react-icons/fa";
+import "../css/TrafficHandling.css";
 
 const TrafficHandling = () => {
     const [likes, setLikes] = useState(0);
@@ -36,8 +37,7 @@ const TrafficHandling = () => {
         };
     
         fetchData();
-    }, [portfolioDataRef]); // will now not retrigger unless the ref changes
-    
+    }, [portfolioDataRef]);
 
     useEffect(() => {
         const liked = localStorage.getItem("hasLikedTrafficPage");
@@ -64,81 +64,18 @@ const TrafficHandling = () => {
     return (
         <div className="traffic-container">
             <div className="metric">
-                <FiEye className="icon" />
-                <span>{impressions}</span>
+                <FiEye className="icon eye-icon" />
+                <span className="metric-count">{impressions}</span>
             </div>
 
             <div className="metric">
                 {hasLiked ? (
-                    <FaThumbsUp className="icon liked" />
+                    <FaThumbsUp className="icon liked-icon" />
                 ) : (
                     <FiThumbsUp className="icon like-icon" onClick={handleLike} />
                 )}
-                <span>{likes}</span>
+                <span className="metric-count">{likes}</span>
             </div>
-
-            <style jsx>{`
-                .traffic-container {
-                    display: flex;
-                    gap: 2rem;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 1.5rem;
-                    margin-top: 0.75rem;
-                }
-
-                .metric {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 0.5rem;
-                    background: #ffffff;
-                    padding: 1rem 1.25rem;
-                    border-radius: 0.5rem;
-                    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
-
-                .metric:hover {
-                    transform: translateY(-3px);
-                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-                }
-
-                .icon {
-                    font-size: 1.5rem;
-                    color: #2563eb;
-                    transition: transform 0.3s ease;
-                    cursor: default; /* default cursor for all icons */
-                }
-
-                .like-icon {
-                    cursor: pointer; /* hand cursor only for FiThumbsUp */
-                }
-
-                .liked {
-                    color: #db2777;
-                    animation: pulse 0.4s ease;
-                }
-
-                .metric:hover .icon {
-                    transform: scale(1.15) rotate(5deg);
-                    color: #1d4ed8;
-                }
-
-                span {
-                    font-weight: 600;
-                    font-size: 1.2rem;
-                    color: #1e40af;
-                    margin: 0;
-                }
-
-                @keyframes pulse {
-                    0% { transform: scale(1); }
-                    50% { transform: scale(1.2); }
-                    100% { transform: scale(1); }
-                }
-            `}</style>
-
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { db } from "../firebase"; // Import Firestore instance
+import { db } from "../firebase";
 import { doc, updateDoc, increment } from "firebase/firestore";
 import "./portfolio.css";
 import Navbar from "./navbar";
@@ -11,22 +11,15 @@ import Blog from "./blogs";
 import Footer from "./footer";
 
 const PortfolioWebsite = () => {
-    // Function to increment impressions
     const incrementImpression = async () => {
-        // Check local storage to see if the user has already been counted
         const hasImpression = localStorage.getItem("hasImpression");
 
         if (!hasImpression) {
             try {
-                // Reference to the Firestore document
                 const portfolioDataRef = doc(db, "portfolioData", "portfolioData");
-
-                // Increment impressionsCount in Firestore
                 await updateDoc(portfolioDataRef, {
                     impressionsCount: increment(1),
                 });
-
-                // Mark the user in local storage
                 localStorage.setItem("hasImpression", "true");
             } catch (error) {
                 console.error("Error updating impressions: ", error);
@@ -34,20 +27,19 @@ const PortfolioWebsite = () => {
         }
     };
 
-    // Call the function on page load
     useEffect(() => {
         incrementImpression();
     }, []);
+
     return (
         <div className="portfolio-website">
             <Navbar />
-            <div className="content">
+            <div className="portfolio-content">
                 <Home />
                 <Experience />
                 <Skills />
                 <Projects />
                 <Blog />
-                {/*<Contact /> */}
                 <Footer />
             </div>
         </div>

@@ -1,3 +1,5 @@
+/* portfolio.css - Updated with Navbar Spacing */
+
 *{
   box-sizing: border-box;
 }
@@ -7,20 +9,44 @@ body {
   overflow-x: hidden;
 }
 
+/* Portfolio container with proper navbar spacing */
 .portfolio-website {
-    height: 200vh;
+    min-height: 100vh;
+    background-color: #161515;
 }
 
+.portfolio-content {
+    min-height: calc(100vh);
+}
+
+/* Ensure all sections respect the navbar space */
 section {
     padding: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    background-color: #161515; /* Dark background for sections */
-    color: #fff; /* White text color for sections */
+    background-color: #161515;
+    color: #fff;
 }
 
+/* Home section with navbar spacing */
+.home-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url('../assets//mypic3.jpg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-left: 50px;
+  padding-right: 20px;
+  width: 100%;
+}
+
+/* Rest of your existing CSS remains the same */
 header {
     display: flex;
     justify-content: space-between;
@@ -98,41 +124,6 @@ header img {
   transition-delay: 300ms;
 }
 
-/* Home section */
-.home-section {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background-image: url('../assets//mypic3.jpg');
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  padding-left: 50px;
-  padding-right: 20px;
-  width: 100%;
-}
-
-/* Overlay content */
-.overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  text-align: left;
-  padding-left: 20px;
-  padding-right: 20px;
-  max-width: 100%;
-  overflow-wrap: break-word;
-}
-
 /* Text styles */
 .home-section .overlay h1 {
   font-size: 2.5rem;
@@ -200,6 +191,51 @@ header img {
 }
 
 /* Mobile */
+@media (max-width: 768px) {
+  .portfolio-content {
+    padding-top: 70px; /* Adjusted for mobile navbar */
+    min-height: calc(100vh - 70px);
+  }
+  
+  section {
+    scroll-margin-top: 70px;
+  }
+  
+  .home-section {
+    margin-top: -70px;
+    padding-top: 70px;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .overlay {
+    padding: 2rem 1rem;
+    width: 100%;
+  }
+
+  .overlay h1 {
+    font-size: 1.8rem;
+  }
+
+  .overlay h2 {
+    font-size: 1.5rem;
+  }
+
+  .overlay p {
+    font-size: 1rem;
+  }
+
+  .connectnow {
+    font-size: 14px;
+    padding: 0.4rem 6px;
+    gap: 4px;
+  }
+
+  .connectnow .connect, .connectnow .now {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 480px) {
   .home-section {
     padding-left: 3%;
@@ -234,14 +270,13 @@ header img {
   }
 }
 
-
-
+/* Rest of your existing CSS for about-me, experience, skills, projects, etc. */
 .about-me {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  background-color: #161515; /* Dark background */
+  background-color: #161515;
   color: #fff;
 }
 
@@ -260,12 +295,12 @@ header img {
 
 .about-image img {
   width: 400px;
-  height: 470px; /* Increased height for a longer image */
+  height: 470px;
   border-radius: 10px;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
   object-fit: cover;
   object-position: center;
-  transform: translateX(80px); /* Shift image slightly right */
+  transform: translateX(80px);
 }
 
 .about-text {
@@ -297,7 +332,7 @@ header img {
       width: 80%;
       max-width: 400px;
       height: auto;
-      transform: none; /* Remove right shift on smaller screens */
+      transform: none;
   }
 }
 
@@ -1083,32 +1118,25 @@ header img {
   }
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .contact-section {
-    flex-direction: column; /* Stack sections vertically */
-    align-items: center; /* Center items */
+  .portfolio-content {
+    padding-top: 70px;
+    min-height: calc(100vh - 70px);
   }
+  
+  section {
+    scroll-margin-top: 70px;
+  }
+}
 
-  .contact__content {
-    margin-right: 10px; /* Remove margin on mobile */
-    margin-bottom: 20px; /* Space below content */
+@media (max-width: 480px) {
+  .portfolio-content {
+    padding-top: 60px;
+    min-height: calc(100vh - 60px);
   }
-
-  .contact__container {
-    max-width: 100%; /* Allow full width on mobile */
-    padding: 20px; /* Adjust padding */
-  }
-
-  .contact__description {
-    font-size: 18px; /* Smaller font size on mobile */
-  }
-  .contact__container {
-    margin: 10px; /* Increased margin for more space around the form */
-    padding: 20px; /* Optional padding inside the form for better spacing */
-    width: 90%; /* Make the form take up most of the screen width with space on the sides */
-  }
-  .contact__button {
-    width: 60%; /* Full width button on mobile */
+  
+  section {
+    scroll-margin-top: 60px;
+    padding: 1rem;
   }
 }

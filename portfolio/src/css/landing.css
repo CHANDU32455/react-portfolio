@@ -1,72 +1,82 @@
-/* Base styles */
+/* landing.css - Optimized */
 :root {
   --primary-color: #f39c12;
   --secondary-color: #e67e22;
   --background-color: #121212;
   --text-color: #ffffff;
   --description-color: #bdbdbd;
+  --blob-cyan: #3fe9ff;
+  --blob-pink: #ff4081;
+  --shadow-light: rgba(255, 255, 255, 0.38);
+  --shadow-cyan: rgba(0, 81, 255, 0.18);
+  --shadow-pink: rgba(255, 64, 129, 0.18);
 }
 
-/* Main landing container */
+
+/* Reset and base styles */
 .landing-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
-  /* Full viewport height */
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height */
   padding: 0 10%;
-  /* Horizontal padding */
-  font-family: 'Arial', sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   background-color: var(--background-color);
-  /* Apply background color */
+  position: relative;
 }
 
-/* Landing content styles */
+/* Content styles */
 .landing-content {
-  max-width: 50%;
+  max-width: min(50%, 600px);
+  flex-shrink: 0;
 }
 
 .landing-title {
-  font-size: 48px;
-  /* Title font size */
-  margin-bottom: 10px;
-  /* Space below title */
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  margin-bottom: 0.5rem;
   color: var(--primary-color);
-  /* Primary color */
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .landing-subtitle {
-  font-size: 36px;
-  /* Subtitle font size */
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
   color: var(--secondary-color);
-  /* Secondary color */
-  margin-bottom: 20px;
-  /* Space below subtitle */
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+  min-height: 2.5em;
+  line-height: 1.3;
 }
 
 .landing-description {
-  font-size: 18px;
-  /* Description font size */
+  font-size: clamp(1rem, 2vw, 1.125rem);
   line-height: 1.6;
-  /* Line height for readability */
-  margin-bottom: 20px;
-  /* Space below description */
+  margin-bottom: 2rem;
   color: var(--description-color);
-  /* Description color */
+  max-width: 90%;
 }
 
+/* Button styles */
 .landing-button {
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
   border-radius: 16px;
   border: none;
   padding: 2px;
   background: radial-gradient(circle 80px at 80% -10%, #ffffff, #181b1b);
   position: relative;
   overflow: hidden;
-  /* Ensure the blobs stay within the button */
-  transition: transform 0.3s ease;
-  /* Smooth transform transition */
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+
+.landing-button:hover {
+  transform: scale(1.05);
+}
+
+.landing-button:active {
+  transform: scale(0.98);
 }
 
 .landing-button::after {
@@ -77,161 +87,93 @@
   border-radius: 120px;
   top: 0;
   right: 0;
-  box-shadow: 0 0 20px #ffffff38;
+  box-shadow: 0 0 20px var(--shadow-light);
   z-index: -1;
 }
 
-.blob1 {
+.blob1, .blob2 {
   position: absolute;
   width: 70px;
   height: 100%;
   border-radius: 16px;
   bottom: 0;
+  background: radial-gradient(circle 60px at 0% 100%, var(--blob-cyan), #0000ff80, transparent);
+  box-shadow: -10px 10px 30px var(--shadow-cyan);
+  will-change: transform;
+}
+
+.blob1 {
   left: 0;
-  background: radial-gradient(circle 60px at 0% 100%,
-      #3fe9ff,
-      #0000ff80,
-      transparent);
-  box-shadow: -10px 10px 30px #0051ff2d;
 }
 
 .blob2 {
-  position: absolute;
-  width: 70px;
-  height: 100%;
-  border-radius: 16px;
-  bottom: 0;
   right: 0;
-  /* Adjusted to position blob2 on the right */
-  background: radial-gradient(circle 60px at 100% 100%,
-      #ff4081,
-      #ff408180,
-      transparent);
-  box-shadow: 10px 10px 30px #ff40812d;
+  background: radial-gradient(circle 60px at 100% 100%, var(--blob-pink), #ff408180, transparent);
+  box-shadow: 10px 10px 30px var(--shadow-pink);
 }
 
 .inner {
-  padding: 14px 25px;
+  padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1.25rem, 3vw, 1.5rem);
   border-radius: 14px;
-  color: #fff;
+  color: var(--text-color);
   z-index: 3;
   position: relative;
   background: radial-gradient(circle 80px at 80% -50%, #777777, #0f1111);
+  font-weight: 500;
 }
 
 .inner::before {
   content: "";
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
+  position: absolute;
+  inset: 0;
   border-radius: 14px;
-  background: radial-gradient(circle 60px at 0% 100%,
-      #00e1ff1a,
-      #0000ff11,
-      transparent);
-  position: absolute;
+  background: radial-gradient(circle 60px at 0% 100%, #00e1ff1a, #0000ff11, transparent);
 }
 
-/* Hover effects */
-.landing-button:hover {
-  transform: scale(1.05);
-  /* Slightly scale the button on hover */
-}
-
-/* Rotating border effect */
-.landing-button:hover::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 16px;
-  border: 4px solid transparent;
-  /* Start with a transparent border */
-  animation: border-animation 3s linear infinite;
-  /* Animate border color */
-}
-
-/* Keyframes for rotating border animation */
-@keyframes border-animation {
-  0% {
-    border-color: transparent transparent #ff4081 transparent;
-    /* Start with pink at bottom */
-  }
-
-  15% {
-    border-color: transparent #ecf0c6 transparent transparent;
-    /* Move to left with cyan */
-  }
-
-  25% {
-    border-color: transparent #00e1ff transparent transparent;
-    /* Move to left with cyan */
-  }
-
-  50% {
-    border-color: #ff4081 transparent transparent transparent;
-    /* Move to top with pink */
-  }
-
-  75% {
-    border-color: transparent transparent #00ff00 transparent;
-    /* Move to right with green */
-  }
-
-  100% {
-    border-color: transparent transparent #ff4081 transparent;
-    /* Reset to bottom with pink */
-  }
-}
-
-
-/* Image box styles */
+/* Image styles */
 .landing-image {
-  max-width: 50%;
-  /* Maximum width for image box */
+  max-width: min(50%, 500px);
   display: flex;
   justify-content: center;
-  /* Center the image */
+  align-items: center;
 }
 
 .landing-image img {
   border-radius: 15px;
   max-width: 100%;
-  max-height: 600px;
   height: auto;
-  width: auto;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-  object-fit: contain; /* Ensure the image fits within the box */
+  max-height: min(600px, 70vh);
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  filter: brightness(1.05) contrast(1.1);
 }
 
-
-/* From Uiverse.io by alexmaracinaru */
-.cta {
+/* Resume button */
+.resume-button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
   border: none;
   background: none;
   cursor: pointer;
-  color: white;
-  /* Set text color to white */
+  color: var(--text-color);
+  z-index: 10;
 }
 
 .cta span {
-  padding-bottom: 7px;
-  letter-spacing: 4px;
-  font-size: 14px;
-  padding-right: 15px;
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  padding-right: 1rem;
   text-transform: uppercase;
-  color: white;
-  /* Set text color to white */
+  font-weight: 500;
 }
 
 .cta svg {
-  transform: translateX(-8px);
-  transition: all 0.3s ease;
-  fill: white;
-  /* Set SVG fill color to white */
+  transform: translateX(-0.5rem);
+  transition: transform 0.3s ease;
+  fill: currentColor;
 }
 
 .cta:hover svg {
@@ -244,80 +186,76 @@
 
 .hover-underline-animation {
   position: relative;
-  color: white;
-  /* Set underline animation color to white */
-  padding-bottom: 20px;
+  padding-bottom: 0.25rem;
 }
 
-.hover-underline-animation:after {
+.hover-underline-animation::after {
   content: "";
   position: absolute;
   width: 100%;
-  transform: scaleX(0);
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #ffffff;
-  /* Set underline color to white */
+  background-color: currentColor;
+  transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
 
-.cta:hover .hover-underline-animation:after {
+.cta:hover .hover-underline-animation::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
 
-/* Resume button specific styles */
-.resume-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: transparent;
-  z-index: 10;
-  /* Ensure it stays above other content */
-}
-
-/* Default: show desktop button, hide mobile */
+/* Button visibility */
 .landing-button-desktop {
   display: block;
-  margin-top: 20px;
 }
 
 .landing-button-mobile {
   display: none;
 }
 
-/* Responsive handling */
+/* Cursor animation */
+.cursor {
+  animation: blink 1s steps(1) infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
   .landing-container {
     flex-direction: column;
-    align-items: center;
-    padding: 0 5%;
-    height: auto;
+    padding: 5rem 5% 2rem;
+    gap: 2rem;
     text-align: center;
+    justify-content: flex-start;
   }
 
   .landing-content {
-    order: 1;
     max-width: 100%;
-    margin-top: 60px;
+    order: 1;
+  }
+
+  .landing-description {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .landing-image {
+    max-width: min(80%, 300px);
     order: 2;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 20px 0;
   }
 
   .landing-image img {
-    max-width: 250px;
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    max-height: 400px;
   }
 
   .landing-button-desktop {
@@ -328,26 +266,40 @@
     display: flex;
     justify-content: center;
     order: 3;
-    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  .resume-button {
+    top: 1rem;
+    right: 1rem;
   }
 }
 
-/* Cursor animation */
-.cursor {
-  animation: blink 1s steps(1) infinite;
-  /* Blinking effect */
+@media (max-width: 480px) {
+  .landing-container {
+    padding: 4rem 1rem 1.5rem;
+  }
+  
+  .landing-image {
+    max-width: 90%;
+  }
+  
+  .landing-image img {
+    max-height: 350px;
+  }
 }
 
-@keyframes blink {
-  0% {
-    opacity: 1;
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .landing-button,
+  .cta svg,
+  .cursor,
+  .hover-underline-animation::after {
+    animation: none;
+    transition: none;
   }
-
-  50% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
+  
+  .landing-button:hover {
+    transform: none;
   }
 }

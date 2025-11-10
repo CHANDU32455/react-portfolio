@@ -1,0 +1,80 @@
+/* TrafficHandling.css */
+.traffic-container {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    margin-top: 0.75rem;
+}
+
+.metric {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    background: #ffffff;
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.metric .icon {
+    font-size: 1.5rem;
+    color: #2563eb;
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.metric .like-icon {
+    cursor: pointer;
+}
+
+.metric .liked-icon {
+    color: #db2777;
+    animation: pulse 0.4s ease;
+}
+
+.metric:hover .icon {
+    transform: scale(1.15) rotate(5deg);
+    color: #1d4ed8;
+}
+
+.metric .metric-count {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #1e40af;
+    margin: 0;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .metric {
+        background: rgba(45, 55, 72, 0.9);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    .metric .icon {
+        color: #60a5fa;
+    }
+    
+    .metric .metric-count {
+        color: #93c5fd;
+    }
+    
+    .metric:hover .icon {
+        color: #3b82f6;
+    }
+}
