@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
@@ -13,10 +12,6 @@ const Footer = () => {
         margin: '0 10px',
         color: '#ffffff',
         fontSize: '24px'
-    };
-
-    const copyStyle = {
-        marginTop: '20px',
     };
 
     return (
@@ -52,7 +47,7 @@ const Footer = () => {
                 >
                     <FaEnvelope />
                 </a>
-            
+
                 <a
                     href="https://www.youtube.com/@Programming365"
                     style={iconStyle}
@@ -62,7 +57,7 @@ const Footer = () => {
                     <FaYoutube />
                 </a>
             </div>
-            <p style={copyStyle} className="footer__copy mb-0">&copy; 2024. All rights reserved.</p>
+            {/**  <p style={{ marginTop: '20px',}} className="footer__copy mb-0">&copy; 2024. All rights reserved.</p> */}
         </footer>
     );
 };

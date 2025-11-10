@@ -1,274 +1,302 @@
 import './portfolio.css';
-import certgenImg from '../assets/ProjectsAssets/certgen_img.png';
-import invoicegenImg from '../assets/ProjectsAssets/invoicegen_img.png';
-import certgendoc from '../assets/ProjectsAssets/Chandu_internship report.pdf';
-import invoicedoc from '../assets/ProjectsAssets/Compsci_submission_invoice.pdf'
+import { useEffect } from 'react';
 
 const ProjectsSection = () => {
-  return (
-    <section
-      id="projects"
-      style={{
-        padding: '2rem',
-        backgroundColor: '#121212',
-        color: '#fff',
-        minHeight: '100vh',
-        overflowY: 'auto',
-      }}
-    >
-      {/* Inline CSS for hover animations */}
-      <style>{`
-        .project-tile-link {
-          display: block;
-          background: #292929;
-          border-radius: 10px;
-          padding: 1rem;
-          box-shadow: 0 0 8px rgba(0,0,0,0.3);
-          text-decoration: none;
-          color: #fff;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .project-tile-link:hover {
-          transform: scale(1.05);
-          box-shadow: 0 0 14px rgba(0,255,224,0.6);
-        }
-      `}</style>
+  useEffect(() => {
+    // Add hover styles safely
+    const style = document.createElement('style');
+    style.textContent = `
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 255, 224, 0.2);
+        border-color: #00ffe0;
+      }
+      
+      .project-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 255, 224, 0.3);
+      }
+      
+      .github-link:hover {
+        background: #00ffe0;
+        color: #121212;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 255, 224, 0.3);
+      }
+    `;
+    document.head.appendChild(style);
 
-      <div style={{ width: '90%', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Explore My Projects</h2>
-        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '2rem' }}>
-          Every time I learn something new, I build something to prove it — these are my "learning proofs". You’ll find internship projects, college work, and casual experiments here.
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  return (
+    <section id="projects" style={styles.section}>
+      <div style={styles.container}>
+        <h2 style={styles.mainTitle}>Projects</h2>
+        <p style={styles.subtitle}>
+          A showcase of my professional work and technical implementations
         </p>
 
-        {/* CodSoft Internship */}
-        <div style={projectTileStyle}>
-          <h3 style={tileHeader}>CodSoft Internship (Oct 2023 – Nov 2023)</h3>
-          <p style={tilePara}>
-            My first internship showed me that Python is more than scripting — it's also about building interactive GUIs. Tackling bugs and iterating on UI logic solidified my patience and problem-solving skills.
-          </p>
+        {/* Project Grid */}
+        <div style={styles.projectsGrid}>
+          {/* Crinzping */}
+          <div style={styles.projectCard} className="project-card">
+            <h3 style={styles.projectTitle}>Crinzping – AWS-Based Roast Feed App</h3>
+            <div style={styles.techStack}>
+              <span style={styles.techTag}>ReactJS</span>
+              <span style={styles.techTag}>AWS Lambda</span>
+              <span style={styles.techTag}>DynamoDB</span>
+              <span style={styles.techTag}>Cognito</span>
+            </div>
+            <p style={styles.projectDesc}>
+              A mobile-first app featuring roast-style message feeds with real-time likes and comments. 
+              Implements AWS Cognito for authentication, serverless backend via Lambda + API Gateway, 
+              and offline-first sync for seamless user experience.
+            </p>
+            <div style={styles.links}>
+              <a 
+                href="https://github.com/CHANDU32455/CrinzPing" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={styles.link}
+                className="project-link"
+              >
+                View Code
+              </a>
+              <a 
+                href="https://crinzping.netlify.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={styles.link}
+                className="project-link"
+              >
+                Live Demo
+              </a>
+            </div>
+          </div>
 
-          <div style={tileGrid}>
-            <a
-              href="https://github.com/CHANDU32455/CodeSoft/blob/main/phone%20book"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-tile-link"
-            >
-              <h4 style={tileTitle}>Phone Book GUI</h4>
-              <p style={tileDesc}>Python contact manager with search, edit & delete—all in a Tkinter interface.</p>
-            </a>
-            <a
-              href="https://github.com/CHANDU32455/CodeSoft/blob/main/random%20password%20generator%20(python)"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-tile-link"
-            >
-              <h4 style={tileTitle}>Random Password Generator</h4>
-              <p style={tileDesc}>Secure passwords of custom length, generated instantly via Tkinter.</p>
-            </a>
-            <a
-              href="https://github.com/CHANDU32455/CodeSoft/blob/main/to%20do%20list.py"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-tile-link"
-            >
-              <h4 style={tileTitle}>To-Do List App</h4>
-              <p style={tileDesc}>Task manager with add, edit, and delete—complete with a themed background.</p>
-            </a>
+          {/* Invoice Generation System */}
+          <div style={styles.projectCard} className="project-card">
+            <h3 style={styles.projectTitle}>Invoice Generation System</h3>
+            <div style={styles.techStack}>
+              <span style={styles.techTag}>ReactJS</span>
+              <span style={styles.techTag}>Flask</span>
+            </div>
+            <p style={styles.projectDesc}>
+              Developed the full ReactJS frontend with smooth API integration and dynamic components. 
+              Supported Flask backend for generating and printing invoices in both A4 and thermal formats 
+              without extra setup.
+            </p>
+            <div style={styles.companyNote}>
+              <span style={styles.noteIcon}>🏢</span>
+              Company Project - Code Confidential
+            </div>
+          </div>
+
+          {/* Certificate Generation Portal */}
+          <div style={styles.projectCard} className="project-card">
+            <h3 style={styles.projectTitle}>Certificate Generation Portal</h3>
+            <div style={styles.techStack}>
+              <span style={styles.techTag}>ReactJS</span>
+              <span style={styles.techTag}>Django</span>
+            </div>
+            <p style={styles.projectDesc}>
+              Built the complete ReactJS frontend with responsive UI, form validation, and workflow logic. 
+              Collaborated with Django backend and PyQt modules for integration and sprint feature delivery.
+            </p>
+            <div style={styles.companyNote}>
+              <span style={styles.noteIcon}>🏢</span>
+              Company Project - Code Confidential
+            </div>
+          </div>
+
+          {/* PULSEVO */}
+          <div style={styles.projectCard} className="project-card">
+            <h3 style={styles.projectTitle}>PULSEVO – Team Productivity Dashboard</h3>
+            <div style={styles.techStack}>
+              <span style={styles.techTag}>ReactJS</span>
+              <span style={styles.techTag}>Flask</span>
+              <span style={styles.techTag}>SQLite3</span>
+              <span style={styles.techTag}>Recharts</span>
+            </div>
+            <p style={styles.projectDesc}>
+              A real-time dashboard tracking team performance and task analytics with time-based filters, 
+              charts, auto-refresh with advanced search, pagination, and performance metrics.
+            </p>
+            <div style={styles.outcome}>
+              <strong>Outcome:</strong> Ranked <strong>1st Place</strong> at <em>Hackathon Nellore 2025</em>
+            </div>
+            <div style={styles.companyNote}>
+              <span style={styles.noteIcon}>🏆</span>
+              Hackathon Project - Demo Available on Request
+            </div>
           </div>
         </div>
 
-        {/* Oasis Infobyte Internship */}
-        <div style={projectTileStyle}>
-          <h3 style={tileHeader}>Oasis Infobyte Internship (Nov 2023 – Dec 2023)</h3>
-          <p style={tilePara}>
-            During my internship at Oasis InfoByte, I immersed myself in a dynamic web development environment. I designed and developed a landing page, a temperature converter, and a basic portfolio. This was my first real experience crafting web pages from scratch using HTML, CSS, and JavaScript—and it felt amazing.
+        {/* Additional Projects Section */}
+        <div style={styles.commentsSection}>
+          <h3 style={styles.commentsTitle}>Additional Projects & Learning</h3>
+          <p style={styles.commentsText}>
+            Explore my complete project history including internship work at CodSoft, Oasis Infobyte, 
+            and CloudCredits, along with personal experiments in AI/ML, web development, and mobile apps 
+            in my portfolio repository.
           </p>
-
-          <div style={tileGrid}>
-            <a
-              href="https://github.com/CHANDU32455/OIBSIP"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-tile-link"
-            >
-              <h4 style={tileTitle}>Landing Page & Converter</h4>
-              <p style={tileDesc}>First hands-on projects in HTML, CSS, and JS — includes a temperature converter and a homepage mockup.</p>
-            </a>
-            <a
-              href="https://github.com/CHANDU32455/OIBSIP-"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-tile-link"
-            >
-              <h4 style={tileTitle}>Portfolio (v1)</h4>
-              <p style={tileDesc}>My early personal portfolio website built with raw HTML/CSS—my first attempt at self-branding online.</p>
-            </a>
-          </div>
+          <a 
+            href="https://github.com/CHANDU32455" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={styles.githubLink}
+            className="github-link"
+          >
+            View My GitHub
+          </a>
         </div>
-
-        {/* CompSci Internship */}
-        <div style={projectTileStyle}>
-          <h3 style={tileHeader}>CompSci Internship (Apr 2024 – Sep 2024)</h3>
-          <p style={tilePara}>
-            My most enriching internship to date—CompSci immersed me in company-grade development cycles, from backend API design to team collaboration and leadership.
-          </p>
-          <ul style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
-            <li style={tileDesc}>
-              <strong>Intern Lead (Jul – Sep 2024):</strong> Led sprint planning, team meetings, and issue resolution in live collaboration settings. Built confidence in communication, accountability, and reporting.
-            </li>
-            <li style={tileDesc}>
-              <strong>SDE Intern (Apr – Sep 2024):</strong> Contributed to real-time web systems using Django and React. Implemented REST APIs, handled session-based certificate generation, explored invoice automation, and began working with Flask to widen my backend experience.
-            </li>
-          </ul>
-
-          <div style={tileGrid}>
-            <a
-              href={certgendoc}
-              rel="noopener noreferrer"
-              className="project-tile-link"
-              style={{ overflow: 'hidden', borderRadius: '12px', position: 'relative' }}
-            >
-              <img
-                src={certgenImg}
-                alt="Certificate Generation Project"
-                style={{
-                  width: '100%',
-                  height: '180px',
-                  objectFit: 'cover',
-                  borderRadius: '8px',
-                  transition: 'transform 0.3s ease',
-                }}
-              />
-              <p style={tileDesc}>Certificate Generation (Report PDF)</p>
-            </a>
-
-            <a
-              href={invoicedoc}
-              rel="noopener noreferrer"
-              className="project-tile-link"
-              style={{ overflow: 'hidden', borderRadius: '12px', position: 'relative' }}
-            >
-              <img
-                src={invoicegenImg}
-                alt="Invoice Management Project"
-                style={{
-                  width: '100%',
-                  height: '180px',
-                  objectFit: 'cover',
-                  borderRadius: '8px',
-                  transition: 'transform 0.3s ease',
-                }}
-              />
-              <p style={tileDesc}>Invoice Management (Submission PDF)</p>
-            </a>
-          </div>
-
-
-        </div>
-
-
-        {/* CloudCredits Internship Tile */}
-        <div style={projectTileStyle}>
-          <h3 style={tileHeader}>CloudCredits Internship (May 2025 – Aug 2025)</h3>
-          <p style={tilePara}>
-            This internship sharpened my focus on applied AI/ML development. I built end-to-end machine learning projects and designed user interfaces so that even non-technical users could interact with the models.
-          </p>
-          <div style={tileGrid}>
-            <a href="https://github.com/CHANDU32455/Cloudcredits/tree/main/Handwritten_Digit_Recognition" target="_blank" rel="noopener noreferrer" className="project-tile-link">
-              <h4 style={tileTitle}>Handwritten Digit Recognizer</h4>
-              <p style={tileDesc}>ML model trained on MNIST + a clean UI to allow digit drawing and prediction—no code knowledge needed.</p>
-            </a>
-            <a href="https://github.com/CHANDU32455/Cloudcredits/tree/main/movie_recommender" target="_blank" rel="noopener noreferrer" className="project-tile-link">
-              <h4 style={tileTitle}>Movie Recommender</h4>
-              <p style={tileDesc}>Content-based filtering engine with a user-friendly interface to suggest movies based on preferences.</p>
-            </a>
-            <a href="https://github.com/CHANDU32455/Cloudcredits/tree/main/HousePricePrediction" target="_blank" rel="noopener noreferrer" className="project-tile-link">
-              <h4 style={tileTitle}>House Price Predictor</h4>
-              <p style={tileDesc}>Predicts house prices using regression models, with a simple UI for inputting property details.</p>
-            </a>
-          </div>
-        </div>
-
-        {/* Personal Projects Tile */}
-        <div style={projectTileStyle}>
-          <h3 style={tileHeader}>Personal Projects</h3>
-          <p style={tilePara}>
-            In my free time, I explore technologies, tools, and frameworks through personal experiments. These projects reflect my curiosity, self-learning spirit, and a hands-on approach to mastering web, mobile, and AI development.
-          </p>
-          <div style={tileGrid}>
-            <a href="https://github.com/CHANDU32455/ebidding/tree/master" target="_blank" rel="noopener noreferrer" className="project-tile-link">
-              <h4 style={tileTitle}>E‑Bidding Platform</h4>
-              <p style={tileDesc}>Built with friends using HTML, CSS, JS, and PHP to simulate a live online bidding system.</p>
-            </a>
-            <a href="https://github.com/CHANDU32455/flutter/tree/master" target="_blank" rel="noopener noreferrer" className="project-tile-link">
-              <h4 style={tileTitle}>Flutter To‑Do App</h4>
-              <p style={tileDesc}>My first cross-platform app exploring Dart and Flutter for a sleek task manager UI.</p>
-            </a>
-            <a href="https://github.com/CHANDU32455/SIH/tree/SIH3" target="_blank" rel="noopener noreferrer" className="project-tile-link">
-              <h4 style={tileTitle}>Inventory Management (SIH)</h4>
-              <p style={tileDesc}>ReactJS + Django app built with my team for Smart India Hackathon 2023.</p>
-            </a>
-            <a href="https://github.com/CHANDU32455/portfolio/tree/casual_portfolio" target="_blank" rel="noopener noreferrer" className="project-tile-link">
-              <h4 style={tileTitle}>HTML/CSS Portfolio</h4>
-              <p style={tileDesc}>A minimal, responsive personal webpage showcasing my bio and skills.</p>
-            </a>
-          </div>
-        </div>
-
-        <div style={projectTileStyle}>
-          <h3 style={tileHeader}>My Work</h3>
-          <p style={tilePara}>
-            this repo highlights my journey through various projects, from coding challenges to desktop applications and React interfaces. It's a testament to my growth as a developer and my passion for continuous learning.
-          </p>
-          <div style={tileGrid}>
-            <a href="https://github.com/CHANDU32455/my-work" target="_blank" rel="noopener noreferrer" className="project-tile-link">
-              <h4 style={tileTitle}>My Work Showcase</h4>
-              <p style={tileDesc}>A collection of side experiments—from LeetCode clones to desktop assistants, music players, React UIs, PyQt tools, and more.</p>
-            </a>
-          </div>
-        </div>
-
       </div>
     </section>
   );
 };
 
-const projectTileStyle = {
-  background: '#1f1f1f',
-  borderRadius: '12px',
-  padding: '1.5rem',
-  boxShadow: '0 0 12px rgba(0,0,0,0.5)',
-  marginBottom: '2rem',
-};
-
-const tileHeader = {
-  fontSize: '1.5rem',
-  color: '#00ffe0',
-  marginBottom: '1rem',
-};
-
-const tilePara = {
-  margin: '1rem 0',
-  fontSize: '1rem',
-  lineHeight: '1.5',
-};
-
-const tileGrid = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-  gap: '1rem',
-};
-
-const tileTitle = {
-  fontSize: '1.1rem',
-  color: '#00ffe0',
-  marginBottom: '0.5rem',
-};
-
-const tileDesc = {
-  fontSize: '0.95rem',
-  color: '#ccc',
+// CSS Styles Object - Fixed and simplified
+const styles = {
+  section: {
+    padding: '3rem 2rem',
+    backgroundColor: '#121212',
+    color: '#fff',
+    minHeight: '100vh',
+    fontFamily: 'Arial, sans-serif'
+  },
+  container: {
+    width: '90%',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  },
+  mainTitle: {
+    fontSize: '2.5rem',
+    fontWeight: '700',
+    marginBottom: '1rem',
+    background: 'linear-gradient(45deg, #00ffe0, #00ffaa)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    textAlign: 'center',
+  },
+  subtitle: {
+    fontSize: '1.2rem',
+    color: '#ccc',
+    textAlign: 'center',
+    marginBottom: '3rem',
+    lineHeight: '1.6',
+  },
+  projectsGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+    gap: '2rem',
+    marginBottom: '4rem',
+  },
+  projectCard: {
+    background: '#1f1f1f',
+    borderRadius: '12px',
+    padding: '2rem',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+    border: '1px solid #333',
+    transition: 'all 0.3s ease',
+    position: 'relative',
+  },
+  projectTitle: {
+    fontSize: '1.4rem',
+    color: '#00ffe0',
+    marginBottom: '1rem',
+    fontWeight: '600',
+  },
+  techStack: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '0.5rem',
+    marginBottom: '1.5rem',
+  },
+  techTag: {
+    background: 'rgba(0, 255, 224, 0.1)',
+    color: '#00ffe0',
+    padding: '0.3rem 0.8rem',
+    borderRadius: '20px',
+    fontSize: '0.85rem',
+    border: '1px solid rgba(0, 255, 224, 0.3)',
+  },
+  projectDesc: {
+    color: '#ccc',
+    lineHeight: '1.6',
+    marginBottom: '1.5rem',
+    fontSize: '1rem',
+  },
+  links: {
+    display: 'flex',
+    gap: '1rem',
+    marginTop: '1rem',
+  },
+  link: {
+    background: 'linear-gradient(45deg, #00ffe0, #00ffaa)',
+    color: '#121212',
+    padding: '0.6rem 1.2rem',
+    borderRadius: '6px',
+    textDecoration: 'none',
+    fontWeight: '600',
+    fontSize: '0.9rem',
+    transition: 'all 0.3s ease',
+  },
+  companyNote: {
+    background: 'rgba(255, 193, 7, 0.1)',
+    color: '#ffc107',
+    padding: '0.8rem',
+    borderRadius: '8px',
+    border: '1px solid rgba(255, 193, 7, 0.3)',
+    fontSize: '0.9rem',
+    marginTop: '1rem',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+  },
+  noteIcon: {
+    fontSize: '1rem',
+  },
+  outcome: {
+    background: 'rgba(0, 255, 170, 0.1)',
+    padding: '0.8rem',
+    borderRadius: '8px',
+    border: '1px solid rgba(0, 255, 170, 0.3)',
+    color: '#00ffaa',
+    fontSize: '0.9rem',
+    marginBottom: '1rem',
+  },
+  commentsSection: {
+    background: '#1a1a1a',
+    borderRadius: '12px',
+    padding: '2.5rem',
+    border: '1px solid #333',
+    textAlign: 'center',
+  },
+  commentsTitle: {
+    color: '#00ffe0',
+    marginBottom: '1rem',
+    fontSize: '1.3rem',
+  },
+  commentsText: {
+    color: '#999',
+    lineHeight: '1.6',
+    fontSize: '1rem',
+    marginBottom: '1.5rem',
+  },
+  githubLink: {
+    background: 'transparent',
+    color: '#00ffe0',
+    padding: '0.8rem 1.5rem',
+    borderRadius: '6px',
+    textDecoration: 'none',
+    fontWeight: '600',
+    border: '2px solid #00ffe0',
+    transition: 'all 0.3s ease',
+    display: 'inline-block',
+  },
 };
 
 export default ProjectsSection;

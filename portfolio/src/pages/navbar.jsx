@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import TrafficHandling from '../components/TrafficHandling';
 import useMediaQuery from '../utils/useMediaQuery'; // Custom hook for media queries

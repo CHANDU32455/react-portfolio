@@ -8,7 +8,6 @@ import Experience from "./experience";
 import Skills from "./skills_scrolling";
 import Projects from "./projects";
 import Blog from "./blogs";
-import Contact from "./contact";
 import Footer from "./footer";
 
 const PortfolioWebsite = () => {
@@ -48,7 +47,7 @@ const PortfolioWebsite = () => {
                 <Skills />
                 <Projects />
                 <Blog />
-                <Contact />
+                {/*<Contact /> */}
                 <Footer />
             </div>
         </div>
