@@ -2,7 +2,6 @@ import "../css/blog1.css";
 import { Link } from "react-router-dom";
 import copyCode from '../utils/copycode.js';
 import Footer from "../pages/footer.jsx";
-import Contact from "../pages/contact.jsx";
 import img1 from "../assets/blog2/Intro to React JS.jpeg";
 import img2 from "../assets/blog2/React JS components.jpeg";
 import img3 from '../assets/blog2/Props in React JS as gift packages from parent to child component.jpeg'
@@ -173,7 +172,6 @@ Hello, Component Master!  `}
 
                 </div>
             </div>
-            <Contact />
             <Footer />
         </>
     );

@@ -1,11 +1,10 @@
-import './portfolio.css';
 import { useEffect } from 'react';
 
 const ProjectsSection = () => {
   useEffect(() => {
-    // Add hover styles safely
     const style = document.createElement('style');
     style.textContent = `
+      /* Hover effects */
       .project-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 30px rgba(0, 255, 224, 0.2);
@@ -23,24 +22,89 @@ const ProjectsSection = () => {
         transform: translateY(-2px);
         box-shadow: 0 4px 15px rgba(0, 255, 224, 0.3);
       }
+
+      /* ✅ Responsive adjustments + centering */
+      @media (max-width: 1024px) {
+        #projects .container {
+          max-width: 900px;
+          width: 95%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        #projects {
+          padding: 2rem 1rem;
+        }
+        #projects .container {
+          max-width: 700px;
+          width: 95%;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          justify-items: center; /* Center project cards */
+        }
+        .project-card {
+          width: 100%;
+          max-width: 400px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        #projects {
+          padding: 1.8rem 0.8rem;
+        }
+        #projects .container {
+          max-width: 420px;
+          width: 100%;
+        }
+        #projects h2 {
+          font-size: 1.8rem;
+        }
+        #projects p {
+          font-size: 0.9rem;
+        }
+        .projects-grid {
+          gap: 1rem;
+          justify-items: center;
+        }
+        .project-card {
+          width: 100%;
+          max-width: 360px;
+          padding: 1.2rem;
+        }
+        .project-card h3 {
+          font-size: 1.05rem;
+        }
+        .tech-tag {
+          font-size: 0.75rem;
+          padding: 0.25rem 0.6rem;
+        }
+        .links a {
+          flex: 1 1 100%;
+          text-align: center;
+        }
+        .github-link {
+          width: 100%;
+          padding: 0.7rem;
+          display: block;
+        }
+      }
     `;
     document.head.appendChild(style);
-
-    return () => {
-      document.head.removeChild(style);
-    };
+    return () => document.head.removeChild(style);
   }, []);
 
   return (
     <section id="projects" style={styles.section}>
-      <div style={styles.container}>
+      <div style={styles.container} className="container">
         <h2 style={styles.mainTitle}>Projects</h2>
         <p style={styles.subtitle}>
           A showcase of my professional work and technical implementations
         </p>
 
         {/* Project Grid */}
-        <div style={styles.projectsGrid}>
+        <div style={styles.projectsGrid} className="projects-grid">
           {/* Crinzping */}
           <div style={styles.projectCard} className="project-card">
             <h3 style={styles.projectTitle}>Crinzping – AWS-Based Roast Feed App</h3>
@@ -55,7 +119,7 @@ const ProjectsSection = () => {
               Implements AWS Cognito for authentication, serverless backend via Lambda + API Gateway, 
               and offline-first sync for seamless user experience.
             </p>
-            <div style={styles.links}>
+            <div style={styles.links} className="links">
               <a 
                 href="https://github.com/CHANDU32455/CrinzPing" 
                 target="_blank" 
@@ -136,7 +200,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* Additional Projects Section */}
-        <div style={styles.commentsSection}>
+        <div style={styles.commentsSection} className="comments-section">
           <h3 style={styles.commentsTitle}>Additional Projects & Learning</h3>
           <p style={styles.commentsText}>
             Explore my complete project history including internship work at CodSoft, Oasis Infobyte, 
@@ -158,19 +222,22 @@ const ProjectsSection = () => {
   );
 };
 
-// CSS Styles Object - Fixed and simplified
 const styles = {
   section: {
     padding: '3rem 2rem',
     backgroundColor: '#121212',
     color: '#fff',
     minHeight: '100vh',
-    fontFamily: 'Arial, sans-serif'
+    fontFamily: 'Arial, sans-serif',
+    overflowX: 'hidden',
   },
   container: {
     width: '90%',
     maxWidth: '1200px',
     margin: '0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   mainTitle: {
     fontSize: '2.5rem',
@@ -190,9 +257,12 @@ const styles = {
   },
   projectsGrid: {
     display: 'grid',
+    justifyContent: 'center',      // ✅ center the grid itself
+    justifyItems: 'center',        // ✅ center items within grid cells
     gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
     gap: '2rem',
     marginBottom: '4rem',
+    width: '100%',
   },
   projectCard: {
     background: '#1f1f1f',
@@ -202,6 +272,8 @@ const styles = {
     border: '1px solid #333',
     transition: 'all 0.3s ease',
     position: 'relative',
+    width: '100%',
+    maxWidth: '400px', // ✅ ensures consistent centered width
   },
   projectTitle: {
     fontSize: '1.4rem',
@@ -214,6 +286,7 @@ const styles = {
     flexWrap: 'wrap',
     gap: '0.5rem',
     marginBottom: '1.5rem',
+    justifyContent: 'center',
   },
   techTag: {
     background: 'rgba(0, 255, 224, 0.1)',
@@ -233,6 +306,8 @@ const styles = {
     display: 'flex',
     gap: '1rem',
     marginTop: '1rem',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
   },
   link: {
     background: 'linear-gradient(45deg, #00ffe0, #00ffaa)',
@@ -255,10 +330,9 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '0.5rem',
+    justifyContent: 'center',
   },
-  noteIcon: {
-    fontSize: '1rem',
-  },
+  noteIcon: { fontSize: '1rem' },
   outcome: {
     background: 'rgba(0, 255, 170, 0.1)',
     padding: '0.8rem',
@@ -267,6 +341,7 @@ const styles = {
     color: '#00ffaa',
     fontSize: '0.9rem',
     marginBottom: '1rem',
+    textAlign: 'center',
   },
   commentsSection: {
     background: '#1a1a1a',
@@ -274,6 +349,8 @@ const styles = {
     padding: '2.5rem',
     border: '1px solid #333',
     textAlign: 'center',
+    maxWidth: '600px',
+    width: '100%',
   },
   commentsTitle: {
     color: '#00ffe0',

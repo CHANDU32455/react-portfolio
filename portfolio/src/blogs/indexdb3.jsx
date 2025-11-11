@@ -1,8 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/blog1.css';
 import Footer from "../pages/footer.jsx";
-import Contact from "../pages/contact";
 import copyCode from '../utils/copycode.js';
 import MediaManager from '../components/media_component.js';
 
@@ -212,7 +210,6 @@ const IndexedDBadvanced = () => {
                 </div>
             </div>
             <MediaManager />
-            <Contact />
             <Footer />
         </>
     );

@@ -1,7 +1,6 @@
 import React from 'react';
 import '../css/blog1.css';
 import Footer from "../pages/footer.js";
-import Contact from "../pages/contact.js";
 import copyCode from '../utils/copycode.js';
 
 const IndexedDBsetup = () => {
@@ -54,7 +53,6 @@ code goes here.
                     </div>
                 </div>
             </div>
-            <Contact />
             <Footer />
         </>
     );

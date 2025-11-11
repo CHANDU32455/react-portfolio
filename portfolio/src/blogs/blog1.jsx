@@ -1,5 +1,3 @@
-import React from "react";
-import Contact from '../pages/contact.jsx';
 import { useState } from "react";
 import "../css/blog1.css"; // Ensure the CSS file is named properly
 import Footer from "../pages/footer.jsx";
@@ -192,7 +190,6 @@ const GuideToInstallingUbuntuLinux = () => {
         </div>
         </div>
       </div>
-      <Contact/>
       <Footer />
     </>
   );

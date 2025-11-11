@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import '../css/blog1.css';
 import overview from "../assets/indexdb/overview.webp";
 import Footer from "../pages/footer.jsx";
-import Contact from "../pages/contact";
-
 
 const IndexedDBGuide = () => {
     return (
@@ -124,7 +122,6 @@ const IndexedDBGuide = () => {
                     </div>
                 </div>
             </div>
-            <Contact />
             <Footer />
         </>
     );
